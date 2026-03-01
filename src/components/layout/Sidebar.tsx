@@ -1,0 +1,66 @@
+import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings } from "lucide-react";
+
+const navItems = [
+  { icon: LayoutDashboard, label: "Overview", active: true },
+  { icon: CreditCard, label: "Ad Accounts", active: false },
+  { icon: Megaphone, label: "Campaigns", active: false },
+  { icon: BarChart2, label: "Analytics", active: false },
+  { icon: Settings, label: "Settings", active: false },
+];
+
+const Sidebar = () => {
+  return (
+    <aside className="w-[220px] h-screen flex-shrink-0 flex flex-col bg-sidebar-bg border-r border-border p-6 px-4 overflow-y-auto">
+      {/* Logo */}
+      <div className="flex items-center gap-2.5 pb-8">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            width="24"
+            height="24"
+            rx="6"
+            className="fill-teal"
+          />
+        </svg>
+        <span className="text-lg font-semibold text-foreground">AdOptimize</span>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex flex-col gap-1">
+        {navItems.map((item) => (
+          <button
+            key={item.label}
+            className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-pill text-sm transition-all duration-200 ${
+              item.active
+                ? "bg-accent text-accent-foreground font-medium"
+                : "text-foreground/60 hover:text-foreground"
+            }`}
+          >
+            <item.icon size={16} />
+            <span>{item.label}</span>
+          </button>
+        ))}
+      </nav>
+
+      {/* User block */}
+      <div className="mt-auto flex items-center gap-2 pt-6">
+        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+          <span className="text-xs font-medium text-primary-foreground">JD</span>
+        </div>
+        <div className="flex flex-col">
+          <span className="text-sm font-medium text-foreground">John D.</span>
+          <span className="bg-accent text-accent-foreground text-xs px-2 py-0.5 rounded-pill w-fit">
+            Admin
+          </span>
+        </div>
+      </div>
+    </aside>
+  );
+};
+
+export default Sidebar;
