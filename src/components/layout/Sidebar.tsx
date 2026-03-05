@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings } from "lucide-react";
+import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
+import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Overview", active: true },
@@ -9,25 +12,30 @@ const navItems = [
 ];
 
 const Sidebar = () => {
+  const [isDark, setIsDark] = useState(
+    () => document.documentElement.classList.contains("dark")
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <aside className="w-[220px] h-screen flex-shrink-0 flex flex-col bg-sidebar-bg border-r border-border p-6 px-4 overflow-y-auto">
       {/* Logo */}
       <div className="flex items-center gap-2.5 pb-8">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            width="24"
-            height="24"
-            rx="6"
-            className="fill-teal"
-          />
-        </svg>
-        <span className="text-lg font-semibold text-foreground">AdOptimize</span>
+        <img
+          src={isDark ? logoDark : logoLight}
+          alt="AdOptimize"
+          className="h-8 w-auto"
+        />
       </div>
 
       {/* Navigation */}
