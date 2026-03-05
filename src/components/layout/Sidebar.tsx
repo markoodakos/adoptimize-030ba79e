@@ -34,7 +34,7 @@ const Sidebar = () => {
         <img
           src={isDark ? logoDark : logoLight}
           alt="AdOptimize"
-          className="h-9 w-auto"
+          className="h-10 w-auto max-w-[160px]"
         />
       </div>
 
