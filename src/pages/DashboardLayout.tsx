@@ -1,5 +1,6 @@
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
+import StatCards from "@/components/dashboard/StatCards";
 
 const DashboardLayout = () => {
   return (
@@ -7,10 +8,10 @@ const DashboardLayout = () => {
       <Sidebar />
       <div className="flex flex-col flex-1 overflow-hidden">
         <TopBar />
-        <main className="flex-1 overflow-y-auto bg-background flex items-center justify-center">
-          <p className="text-sm italic text-foreground/40">
-            Dashboard content coming soon
-          </p>
+        <main className="flex-1 overflow-y-auto bg-background">
+          <div className="p-6">
+            <StatCards />
+          </div>
         </main>
       </div>
     </div>
