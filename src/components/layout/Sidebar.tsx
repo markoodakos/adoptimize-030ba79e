@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings } from "lucide-react";
-import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
-import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
+import logoLight from "@/assets/brand/adoptimize_logo_light_256.png";
+import logoDark from "@/assets/brand/adoptimize_logo_dark_256.png";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Overview", active: true },
@@ -34,7 +34,7 @@ const Sidebar = () => {
         <img
           src={isDark ? logoDark : logoLight}
           alt="AdOptimize"
-          className="h-10 w-auto max-w-[160px]"
+          className="h-8 w-auto max-w-[140px] object-contain object-left"
         />
       </div>
 
