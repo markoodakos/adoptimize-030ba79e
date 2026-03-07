@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Youtube } from "lucide-react";
+import type { AnalysisTarget } from "./AIAnalysisPanel";
 
 interface Account {
   id: number;
@@ -10,6 +11,9 @@ interface Account {
   status: "Active" | "Paused";
 }
 
+interface AdAccountsTableProps {
+  onAnalyze: (target: AnalysisTarget) => void;
+}
 const accounts: Account[] = [
   { id: 1, platform: "Facebook", account: "Nike Campaign", campaigns: 8, spend: "$4,200", ctr: 4.2, status: "Active" },
   { id: 2, platform: "Instagram", account: "Adidas Stories", campaigns: 5, spend: "$3,100", ctr: 3.1, status: "Active" },
@@ -43,7 +47,7 @@ const statusPill = (status: Account["status"]) => {
   return <span className={`${base} ${color}`}>{status}</span>;
 };
 
-const AdAccountsTable = () => {
+const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
   return (
     <div>
       {/* Section Header */}
@@ -103,7 +107,7 @@ const AdAccountsTable = () => {
                 {/* Actions */}
                 <td className="px-4 py-3 text-sm">
                   <button
-                    onClick={() => console.log("Analyze:", account.account)}
+                    onClick={() => onAnalyze({ platform: account.platform, name: account.account })}
                     className="border border-[hsl(var(--color-teal))] text-[hsl(var(--color-teal))] hover:bg-[hsl(var(--color-teal))] hover:text-[hsl(var(--color-lime))] rounded-lg px-3 py-1 text-xs font-medium transition-colors duration-150 cursor-pointer"
                   >
                     Analyze
