@@ -2,6 +2,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import StatCards from "@/components/dashboard/StatCards";
 import ChartsRow from "@/components/dashboard/ChartsRow";
+import AdAccountsTable from "@/components/dashboard/AdAccountsTable";
 
 const DashboardLayout = () => {
   return (
@@ -13,6 +14,7 @@ const DashboardLayout = () => {
           <div className="p-6">
             <StatCards />
             <div className="mt-6"><ChartsRow /></div>
+            <div className="mt-6"><AdAccountsTable /></div>
           </div>
         </main>
       </div>
