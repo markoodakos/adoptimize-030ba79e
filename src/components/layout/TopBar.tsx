@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { Search, Bell, Sun, Moon, ChevronDown } from "lucide-react";
+import { Search, Bell, Sun, Moon, ChevronDown, Menu } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const TopBar = () => {
+interface TopBarProps {
+  onMenuClick: () => void;
+}
+
+const TopBar = ({ onMenuClick }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -20,8 +24,16 @@ const TopBar = () => {
 
   return (
     <header className="sticky top-0 z-10 h-16 bg-background border-b border-border border-b-neutral-100 dark:border-b-neutral-800 px-6 flex items-center justify-between">
+      {/* Hamburger — mobile only */}
+      <button
+        onClick={onMenuClick}
+        className="block lg:hidden p-1.5 rounded-md text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex-shrink-0"
+      >
+        <Menu size={20} />
+      </button>
+
       {/* Search */}
-      <div className="relative w-full max-w-[280px]">
+      <div className="relative w-full sm:w-[280px] hidden sm:flex">
         <Search
           size={14}
           className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
