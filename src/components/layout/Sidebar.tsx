@@ -62,9 +62,6 @@ const Sidebar = () => {
         </div>
         <div className="flex flex-col">
           <span className="text-sm font-medium text-foreground">John D.</span>
-          <span className="bg-accent text-accent-foreground text-xs px-2 py-0.5 rounded-pill w-fit">
-            Admin
-          </span>
         </div>
       </div>
     </aside>

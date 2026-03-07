@@ -75,7 +75,7 @@ const StatCards = () => {
   return (
     <div>
       <h2 className="text-2xl font-semibold text-foreground mb-1">Welcome back, John D.</h2>
-      <p className="text-sm text-muted-foreground mb-0">
+      <p className="text-sm text-muted-foreground mb-6">
         Here's how your ad accounts are performing.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
