@@ -100,7 +100,7 @@ const AIAnalysisPanel = ({ target, onClose }: AIAnalysisPanelProps) => {
       <div className="fixed inset-0 bg-foreground/20 z-40" />
 
       {/* Panel */}
-      <div className="fixed top-0 right-0 h-full w-[380px] bg-card border-l border-border z-50 flex flex-col animate-in slide-in-from-right duration-300">
+      <div className="fixed top-0 right-0 h-full w-full sm:w-[380px] bg-card border-l border-border z-50 flex flex-col animate-in slide-in-from-right duration-300">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-border flex-shrink-0">
           <div className="flex flex-col">

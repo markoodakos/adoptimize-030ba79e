@@ -62,7 +62,8 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
 
       {/* Table Card */}
       <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-100 dark:border-neutral-800 w-full overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto w-full">
+        <table className="min-w-[640px] w-full">
           <thead>
             <tr className="bg-neutral-50 dark:bg-neutral-800/60 border-b border-neutral-100 dark:border-neutral-800">
               {["Platform", "Account", "Campaigns", "Spend", "CTR", "Status", "Actions"].map((h) => (
@@ -117,6 +118,7 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
