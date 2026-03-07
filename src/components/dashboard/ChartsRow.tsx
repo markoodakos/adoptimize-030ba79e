@@ -116,7 +116,7 @@ const ChartsRow = () => {
             <Area
               type="monotone"
               dataKey="instagram"
-              stroke="hsl(var(--color-lime))"
+              stroke="hsl(74, 60%, 55%)"
               fill="hsl(var(--color-lime))"
               fillOpacity={0.12}
               strokeWidth={2}
