@@ -150,7 +150,7 @@ const ChartsRow = () => {
             />
             <Tooltip content={<CTRTooltip />} />
             <Bar dataKey="facebook" fill="hsl(var(--color-teal))" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="instagram" fill="hsl(var(--color-lime))" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="instagram" fill="hsl(74, 60%, 55%)" radius={[4, 4, 0, 0]} />
             <Bar dataKey="youtube" fill="#94a3b8" radius={[4, 4, 0, 0]} />
             <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 12, marginTop: 12 }} />
           </BarChart>
