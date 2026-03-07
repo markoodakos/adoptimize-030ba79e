@@ -15,8 +15,8 @@ const DashboardLayout = () => {
       <div className="flex flex-col flex-1 overflow-hidden">
         <TopBar />
         <main className="flex-1 overflow-y-auto bg-background">
-          <div className="p-6">
-            <StatCards />
+          <div className="px-8 py-8">
+            <div className="mb-6"><StatCards /></div>
             <div className="mt-6"><ChartsRow /></div>
             <div className="mt-6"><AdAccountsTable onAnalyze={setAnalysisTarget} /></div>
           </div>

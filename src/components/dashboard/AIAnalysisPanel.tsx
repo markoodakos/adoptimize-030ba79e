@@ -159,6 +159,48 @@ const AIAnalysisPanel = ({ target, onClose }: AIAnalysisPanelProps) => {
                   </div>
                 ))}
               </div>
+
+              {/* C. Recommended Actions */}
+              <div>
+                <p className="font-semibold text-sm text-neutral-900 dark:text-neutral-100 mb-3">
+                  Recommended Actions
+                </p>
+                {[
+                  {
+                    title: "Refresh Ad Creatives",
+                    priority: "High" as const,
+                    desc: "Upload 3–5 new creatives and rotate automatically using dynamic creative.",
+                  },
+                  {
+                    title: "Adjust Bidding Strategy",
+                    priority: "Medium" as const,
+                    desc: "Switch from manual CPC to cost cap to stabilize delivery and reduce CPM.",
+                  },
+                ].map((action, i) => (
+                  <div
+                    key={i}
+                    className="bg-neutral-50 dark:bg-neutral-800/60 rounded-lg p-3 border border-neutral-100 dark:border-neutral-700 mb-3 last:mb-0"
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+                        {action.title}
+                      </span>
+                      <span
+                        className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                          action.priority === "High"
+                            ? "bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400"
+                            : "bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400"
+                        }`}
+                      >
+                        {action.priority}
+                      </span>
+                    </div>
+                    <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-1">
+                      {action.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

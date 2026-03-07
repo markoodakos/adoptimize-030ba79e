@@ -66,7 +66,7 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
           <thead>
             <tr className="bg-neutral-50 dark:bg-neutral-800/60 border-b border-neutral-100 dark:border-neutral-800">
               {["Platform", "Account", "Campaigns", "Spend", "CTR", "Status", "Actions"].map((h) => (
-                <th key={h} className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide px-4 py-3 text-left">
+                <th key={h} className={`text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide px-4 py-3 text-left${h === "Actions" ? " min-w-[100px]" : ""}`}>
                   {h}
                 </th>
               ))}
@@ -105,7 +105,7 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
                 {/* Status */}
                 <td className="px-4 py-3 text-sm">{statusPill(account.status)}</td>
                 {/* Actions */}
-                <td className="px-4 py-3 text-sm">
+                <td className="px-4 py-3 text-sm min-w-[100px]">
                   <button
                     onClick={() => onAnalyze({ platform: account.platform, name: account.account })}
                     className="border border-[hsl(var(--color-teal))] text-[hsl(var(--color-teal))] hover:bg-[hsl(var(--color-teal))] hover:text-[hsl(var(--color-lime))] rounded-lg px-3 py-1 text-xs font-medium transition-colors duration-150 cursor-pointer"
