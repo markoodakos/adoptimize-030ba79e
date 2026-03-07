@@ -12,6 +12,7 @@ const DashboardLayout = () => {
         <main className="flex-1 overflow-y-auto bg-background">
           <div className="p-6">
             <StatCards />
+            <ChartsRow />
           </div>
         </main>
       </div>
