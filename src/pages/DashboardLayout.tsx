@@ -1,6 +1,7 @@
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import StatCards from "@/components/dashboard/StatCards";
+import ChartsRow from "@/components/dashboard/ChartsRow";
 
 const DashboardLayout = () => {
   return (
