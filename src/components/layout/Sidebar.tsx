@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings } from "lucide-react";
+import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X } from "lucide-react";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 
@@ -11,7 +11,12 @@ const navItems = [
   { icon: Settings, label: "Settings", active: false },
 ];
 
-const Sidebar = () => {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const [isDark, setIsDark] = useState(
     () => document.documentElement.classList.contains("dark")
   );
@@ -28,43 +33,79 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <aside className="w-[220px] h-screen flex-shrink-0 flex flex-col bg-sidebar-bg border-r border-border p-6 px-4 overflow-y-auto">
-      {/* Logo */}
-      <div className="flex items-center gap-2.5 pb-8">
-        <img
-          src={isDark ? logoDark : logoLight}
-          alt="AdOptimize"
-          className="h-7 w-auto object-contain object-left"
+    <>
+      {/* Backdrop — below lg only */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-foreground/50 z-40 lg:hidden"
+          onClick={onClose}
         />
-      </div>
+      )}
 
-      {/* Navigation */}
-      <nav className="flex flex-col gap-1">
-        {navItems.map((item) => (
-          <button
-            key={item.label}
-            className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-pill text-sm transition-all duration-200 ${
-              item.active
-                ? "bg-accent text-accent-foreground font-medium"
-                : "text-foreground/60 hover:text-foreground"
-            }`}
-          >
-            <item.icon size={16} />
-            <span>{item.label}</span>
-          </button>
-        ))}
-      </nav>
+      {/* Sidebar panel */}
+      <aside
+        className={`
+          fixed inset-y-0 left-0 z-50
+          w-[280px] lg:w-[210px]
+          bg-sidebar-bg
+          shadow-2xl lg:shadow-none
+          flex flex-col
+          transition-transform duration-300
+          ease-in-out
+          lg:translate-x-0
+          border-r border-border
+          p-6 px-4 overflow-y-auto
+          ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+        `}
+      >
+        {/* Close button — mobile only */}
+        <button
+          onClick={onClose}
+          className="lg:hidden absolute top-4 right-4 text-foreground/60 hover:opacity-70 transition-opacity"
+        >
+          <X size={20} />
+        </button>
 
-      {/* User block */}
-      <div className="mt-auto flex items-center gap-2 pt-6">
-        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-          <span className="text-xs font-medium text-primary-foreground">JD</span>
+        {/* Logo */}
+        <div className="flex items-center gap-2.5 pb-8">
+          <img
+            src={isDark ? logoDark : logoLight}
+            alt="AdOptimize"
+            className="h-7 w-auto object-contain object-left"
+          />
         </div>
-        <div className="flex flex-col">
-          <span className="text-sm font-medium text-foreground">John D.</span>
+
+        {/* Navigation */}
+        <nav className="flex flex-col gap-1">
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => {
+                if (window.innerWidth < 1024) onClose();
+              }}
+              className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-pill text-sm transition-all duration-200 ${
+                item.active
+                  ? "bg-accent text-accent-foreground font-medium"
+                  : "text-foreground/60 hover:text-foreground"
+              }`}
+            >
+              <item.icon size={16} />
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* User block */}
+        <div className="mt-auto flex items-center gap-2 pt-6">
+          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <span className="text-xs font-medium text-primary-foreground">JD</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-medium text-foreground">John D.</span>
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 
