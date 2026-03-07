@@ -47,7 +47,7 @@ const StatCard = ({ icon: Icon, value, label, sub, badge }: StatCardProps) => {
   return (
     <div className="bg-card text-card-foreground rounded-[var(--radius-card)] shadow-card p-5 flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <div className="bg-teal/10 p-2 rounded-[var(--radius-btn)]">
+        <div className="bg-[hsl(var(--color-teal))]/10 rounded-lg p-2 w-fit">
           <Icon size={18} className="text-teal" />
         </div>
         {badge && (
@@ -75,7 +75,7 @@ const StatCards = () => {
   return (
     <div>
       <h2 className="text-2xl font-semibold text-foreground mb-1">Welcome back, John D.</h2>
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-sm text-muted-foreground mb-0">
         Here's how your ad accounts are performing.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

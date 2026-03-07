@@ -19,7 +19,7 @@ const TopBar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 h-16 bg-background border-b border-border px-6 flex items-center justify-between">
+    <header className="sticky top-0 z-10 h-16 bg-background border-b border-border border-b-neutral-100 dark:border-b-neutral-800 px-6 flex items-center justify-between">
       {/* Search */}
       <div className="relative w-full max-w-[280px]">
         <Search
