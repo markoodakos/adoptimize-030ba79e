@@ -11,9 +11,9 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       <div className="hidden lg:flex lg:w-1/2 bg-[hsl(var(--color-teal))] flex-col items-center justify-center p-16">
         <div className="max-w-[360px] mx-auto">
           <img
-            src={logoLight}
+            src="/src/assets/brand/adoptimize_logo_light.svg"
             alt="AdOptimize"
-            className="h-10 w-auto mb-8"
+            className="h-8 w-auto object-contain object-left mb-8"
           />
 
           <h1 className="text-3xl font-bold text-[hsl(var(--color-lime))] leading-tight">
