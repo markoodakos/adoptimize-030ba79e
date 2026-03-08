@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import AuthLayout from "@/components/auth/AuthLayout";
-import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
-import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
