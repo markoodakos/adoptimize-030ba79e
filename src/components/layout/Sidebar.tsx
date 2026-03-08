@@ -95,6 +95,16 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           ))}
         </nav>
 
+        {/* Mobile Connect Account */}
+        <div className="lg:hidden mx-4 pt-4 mb-4 border-t border-white/10">
+          <button
+            onClick={onClose}
+            className="w-full bg-[hsl(var(--color-lime))] text-[hsl(var(--color-teal))] font-semibold text-sm rounded-lg py-2.5 hover:opacity-90 transition-opacity"
+          >
+            + Connect Account
+          </button>
+        </div>
+
         {/* User block */}
         <div className="mt-auto flex items-center gap-2 pt-6">
           <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
