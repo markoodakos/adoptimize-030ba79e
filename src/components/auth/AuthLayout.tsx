@@ -1,4 +1,5 @@
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
+import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
