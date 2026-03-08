@@ -33,7 +33,7 @@ const TopBar = ({ onMenuClick }: TopBarProps) => {
       </button>
 
       {/* 2. Search */}
-      <div className="relative flex w-full md:w-[180px] lg:w-[280px]">
+      <div className="relative hidden min-[420px]:flex min-[420px]:w-full md:w-[180px] lg:w-[280px]">
         <Search
           size={14}
           className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
