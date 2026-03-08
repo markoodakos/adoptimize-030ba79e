@@ -44,6 +44,11 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       {/* Right Form Panel */}
       <div className="w-full lg:w-1/2 bg-white dark:bg-neutral-900 flex items-center justify-center p-8 lg:p-16 min-h-screen">
         <div className="w-full max-w-[440px] mx-auto">
+          <img
+            src={logoLight}
+            alt="AdOptimize"
+            className="h-8 w-auto object-contain mb-8"
+          />
           {children}
         </div>
       </div>
