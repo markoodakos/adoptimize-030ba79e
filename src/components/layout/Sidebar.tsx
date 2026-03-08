@@ -47,13 +47,13 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         className={`
           fixed inset-y-0 left-0 z-50
           w-[280px] lg:w-[210px]
-          bg-[hsl(var(--color-teal))]
+          bg-[hsl(174,40%,94%)] dark:bg-[hsl(var(--color-teal))]
           shadow-2xl lg:shadow-none
           flex flex-col
           transition-transform duration-300
           ease-in-out
           lg:translate-x-0
-          border-r border-border
+          border-r border-[hsl(174,40%,85%)] dark:border-white/10
           p-6 px-4 overflow-y-auto
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
@@ -69,7 +69,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {/* Logo */}
         <div className="flex items-center gap-2.5 pb-8">
           <img
-            src={isDark ? logoDark : logoLight}
+            src={isDark ? logoLight : logoDark}
             alt="AdOptimize"
             className="h-7 w-auto object-contain object-left"
           />
@@ -85,11 +85,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               }}
               className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-pill text-sm transition-all duration-200 ${
                 item.active
-                  ? "bg-accent text-accent-foreground font-medium"
-                  : "text-foreground/60 hover:text-foreground"
+                  ? "bg-accent text-[hsl(var(--color-teal))] dark:text-[hsl(var(--color-nearblack))] font-medium"
+                  : "text-[hsl(var(--color-teal))] dark:text-white/70 hover:opacity-80"
               }`}
             >
-              <item.icon size={16} />
+              <item.icon size={16} className={item.active ? "" : "text-[hsl(var(--color-teal))]/70 dark:text-white/60"} />
               <span>{item.label}</span>
             </button>
           ))}
@@ -99,7 +99,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         <div className="lg:hidden mx-4 pt-4 mb-4 border-t border-white/10">
           <button
             onClick={onClose}
-            className="w-full bg-[hsl(var(--color-lime))] text-[hsl(var(--color-teal))] font-semibold text-sm rounded-lg py-2.5 hover:opacity-90 transition-opacity"
+            className="w-full bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] dark:bg-[hsl(var(--color-lime))] dark:text-[hsl(var(--color-teal))] font-semibold text-sm rounded-lg py-2.5 hover:opacity-90 transition-opacity"
           >
             + Connect Account
           </button>
@@ -107,11 +107,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
         {/* User block */}
         <div className="mt-auto flex items-center gap-2 pt-6">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-            <span className="text-xs font-medium text-primary-foreground">JD</span>
+          <div className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] text-white dark:bg-[hsl(var(--color-lime))] dark:text-[hsl(var(--color-teal))] flex items-center justify-center flex-shrink-0">
+            <span className="text-xs font-medium">JD</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-medium text-foreground">John D.</span>
+            <span className="text-sm font-medium text-[hsl(var(--color-teal))] dark:text-white">John D.</span>
           </div>
         </div>
       </aside>
