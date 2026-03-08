@@ -47,7 +47,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         className={`
           fixed inset-y-0 left-0 z-50
           w-[280px] lg:w-[210px]
-          bg-sidebar-bg
+          bg-[hsl(var(--color-teal))]
           shadow-2xl lg:shadow-none
           flex flex-col
           transition-transform duration-300
