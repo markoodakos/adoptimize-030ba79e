@@ -1,3 +1,4 @@
+import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 
 interface AuthLayoutProps {
@@ -11,9 +12,9 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       <div className="hidden lg:flex lg:w-1/2 bg-[hsl(var(--color-teal))] flex-col items-center justify-center p-16">
         <div className="max-w-[360px] mx-auto">
           <img
-            src={logoLight}
+            src={logoDark}
             alt="AdOptimize"
-            className="h-10 w-auto mb-8"
+            className="h-8 w-auto object-contain object-left mb-8"
           />
 
           <h1 className="text-3xl font-bold text-[hsl(var(--color-lime))] leading-tight">
@@ -43,6 +44,11 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       {/* Right Form Panel */}
       <div className="w-full lg:w-1/2 bg-white dark:bg-neutral-900 flex items-center justify-center p-8 lg:p-16 min-h-screen">
         <div className="w-full max-w-[440px] mx-auto">
+          <img
+            src={logoLight}
+            alt="AdOptimize"
+            className="h-8 w-auto object-contain mb-8"
+          />
           {children}
         </div>
       </div>
