@@ -69,7 +69,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {/* Logo */}
         <div className="flex items-center gap-2.5 pb-8">
           <img
-            src={isDark ? logoLight : logoDark}
+            src={isDark ? logoDark : logoLight}
             alt="AdOptimize"
             className="h-7 w-auto object-contain object-left"
           />
