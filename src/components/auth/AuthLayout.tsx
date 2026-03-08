@@ -1,4 +1,4 @@
-import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
+
 
 interface AuthLayoutProps {
   children: React.ReactNode;
