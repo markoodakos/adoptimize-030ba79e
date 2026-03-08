@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import AuthLayout from "@/components/auth/AuthLayout";
@@ -32,20 +32,6 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isDark, setIsDark] = useState(() =>
-    document.documentElement.classList.contains("dark")
-  );
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains("dark"));
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => observer.disconnect();
-  }, []);
 
   const strength = getStrength(password);
 
@@ -56,11 +42,6 @@ const SignupPage = () => {
 
   return (
     <AuthLayout>
-      <img
-        src={isDark ? logoLight : logoDark}
-        alt="AdOptimize"
-        className="h-8 w-auto mb-8"
-      />
 
       <h2 className="text-2xl font-bold text-foreground">Create your account</h2>
       <p className="text-sm text-muted-foreground mt-1 mb-8">
