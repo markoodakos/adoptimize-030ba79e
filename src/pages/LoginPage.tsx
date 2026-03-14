@@ -1,16 +1,40 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import AuthLayout from "@/components/auth/AuthLayout";
+import { supabase } from "@/integrations/supabase/client";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, password });
+    setLoading(true);
+    setError(null);
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      setError(error.message);
+    } else {
+      navigate("/dashboard");
+    }
+    setLoading(false);
+  };
+
+  const handleGoogle = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin + "/dashboard",
+      },
+    });
   };
 
   return (
@@ -62,12 +86,18 @@ const LoginPage = () => {
           </a>
         </div>
 
+        {/* Error */}
+        {error && (
+          <p className="text-sm text-destructive mt-4">{error}</p>
+        )}
+
         {/* Submit */}
         <button
           type="submit"
-          className="mt-6 w-full h-10 rounded-md bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+          disabled={loading}
+          className="mt-6 w-full h-10 rounded-md bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
         >
-          Sign in
+          {loading ? "Signing in…" : "Sign in"}
         </button>
       </form>
 
@@ -81,6 +111,7 @@ const LoginPage = () => {
       {/* Google */}
       <button
         type="button"
+        onClick={handleGoogle}
         className="w-full h-10 rounded-md border border-input bg-background text-foreground font-medium text-sm hover:bg-accent/50 transition-colors flex items-center justify-center gap-2"
       >
         <svg width="18" height="18" viewBox="0 0 48 48">
