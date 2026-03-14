@@ -80,10 +80,26 @@ const TopBar = ({ onMenuClick }: TopBarProps) => {
           {isDark ? <Sun size={18} /> : <Moon size={18} />}
         </button>
 
-        {/* 6. Avatar only */}
-        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 cursor-pointer">
-          <span className="text-xs font-medium text-primary-foreground">JD</span>
-        </div>
+        {/* 6. Avatar dropdown */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] dark:bg-[hsl(var(--color-lime))] text-white dark:text-[hsl(var(--color-teal))] text-xs font-semibold flex items-center justify-center hover:opacity-90 transition focus:outline-none">
+              JD
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuItem disabled className="text-xs text-neutral-400">
+              John D.
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={handleSignOut}
+              className="text-red-500 hover:text-red-600 cursor-pointer text-sm"
+            >
+              Sign out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         {/* Connect Account — hidden below lg */}
         <Button
