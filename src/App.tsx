@@ -7,6 +7,7 @@ import DashboardLayout from "./pages/DashboardLayout";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
