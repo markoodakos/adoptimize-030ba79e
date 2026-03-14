@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import AuthLayout from "@/components/auth/AuthLayout";
+import { supabase } from "@/integrations/supabase/client";
 
 const getStrength = (pwd: string) => {
   if (pwd.length === 0) return 0;
@@ -32,12 +33,43 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const strength = getStrength(password);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ fullName, email, password, confirmPassword });
+    setLoading(true);
+    setError(null);
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: fullName },
+      },
+    });
+    if (error) {
+      setError(error.message);
+    } else {
+      navigate("/dashboard");
+    }
+    setLoading(false);
+  };
+
+  const handleGoogle = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin + "/dashboard",
+      },
+    });
   };
 
   return (
@@ -129,12 +161,18 @@ const SignupPage = () => {
           </div>
         </div>
 
+        {/* Error */}
+        {error && (
+          <p className="text-sm text-destructive mt-4">{error}</p>
+        )}
+
         {/* Submit */}
         <button
           type="submit"
-          className="mt-6 w-full h-10 rounded-md bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+          disabled={loading}
+          className="mt-6 w-full h-10 rounded-md bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
         >
-          Create account
+          {loading ? "Creating account…" : "Create account"}
         </button>
       </form>
 
@@ -148,6 +186,7 @@ const SignupPage = () => {
       {/* Google */}
       <button
         type="button"
+        onClick={handleGoogle}
         className="w-full h-10 rounded-md border border-input bg-background text-foreground font-medium text-sm hover:bg-accent/50 transition-colors flex items-center justify-center gap-2"
       >
         <svg width="18" height="18" viewBox="0 0 48 48">
