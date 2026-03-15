@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X } from "lucide-react";
+import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X, LogOut } from "lucide-react";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
@@ -19,9 +21,15 @@ interface SidebarProps {
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { profile, getInitials } = useAuth();
+  const navigate = useNavigate();
   const [isDark, setIsDark] = useState(
     () => document.documentElement.classList.contains("dark")
   );
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/login");
+  };
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -108,23 +116,36 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         </div>
 
         {/* User block */}
-        <div className="mt-auto flex items-center gap-2 pt-6">
-          <div className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] text-white dark:bg-[hsl(var(--color-lime))] dark:text-[hsl(var(--color-teal))] flex items-center justify-center flex-shrink-0">
-            {profile?.avatar_url ? (
-              <img
-                src={profile.avatar_url}
-                alt="avatar"
-                className="w-8 h-8 rounded-full object-cover"
-              />
-            ) : (
-              <span className="text-xs font-medium">
-                {getInitials(profile?.full_name ?? profile?.email ?? null)}
-              </span>
-            )}
+        <div className="mt-auto flex items-center justify-between pt-6">
+          <div className="flex items-center gap-2">
+            {/* Avatar */}
+            <div className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] text-white dark:bg-[hsl(var(--color-lime))] dark:text-[hsl(var(--color-teal))] flex items-center justify-center flex-shrink-0">
+              {profile?.avatar_url ? (
+                <img
+                  src={profile.avatar_url}
+                  alt="avatar"
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+              ) : (
+                <span className="text-xs font-medium">
+                  {getInitials(profile?.full_name ?? profile?.email ?? null)}
+                </span>
+              )}
+            </div>
+
+            {/* Name */}
+            <span className="text-sm font-medium text-[hsl(var(--color-teal))] dark:text-white truncate max-w-[100px]">
+              {profile?.full_name ?? profile?.email ?? "Account"}
+            </span>
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-medium text-[hsl(var(--color-teal))] dark:text-white">{profile?.full_name ?? profile?.email ?? "Account"}</span>
-          </div>
+
+          {/* Sign out button */}
+          <button
+            onClick={handleSignOut}
+            className="text-[hsl(var(--color-teal))]/60 dark:text-white/60 hover:text-destructive dark:hover:text-destructive transition-colors flex-shrink-0"
+          >
+            <LogOut size={16} />
+          </button>
         </div>
       </aside>
     </>
