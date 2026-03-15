@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X } from "lucide-react";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
+import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Overview", active: true },
@@ -17,6 +18,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+  const { profile, getInitials } = useAuth();
   const [isDark, setIsDark] = useState(
     () => document.documentElement.classList.contains("dark")
   );
@@ -108,10 +110,20 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {/* User block */}
         <div className="mt-auto flex items-center gap-2 pt-6">
           <div className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] text-white dark:bg-[hsl(var(--color-lime))] dark:text-[hsl(var(--color-teal))] flex items-center justify-center flex-shrink-0">
-            <span className="text-xs font-medium">JD</span>
+            {profile?.avatar_url ? (
+              <img
+                src={profile.avatar_url}
+                alt="avatar"
+                className="w-8 h-8 rounded-full object-cover"
+              />
+            ) : (
+              <span className="text-xs font-medium">
+                {getInitials(profile?.full_name ?? profile?.email ?? null)}
+              </span>
+            )}
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-medium text-[hsl(var(--color-teal))] dark:text-white">John D.</span>
+            <span className="text-sm font-medium text-[hsl(var(--color-teal))] dark:text-white">{profile?.full_name ?? profile?.email ?? "Account"}</span>
           </div>
         </div>
       </aside>

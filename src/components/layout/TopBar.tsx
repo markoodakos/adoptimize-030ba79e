@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Search, Bell, Sun, Moon, Menu, HelpCircle } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -19,6 +20,7 @@ interface TopBarProps {
 const TopBar = ({ onMenuClick }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
   const navigate = useNavigate();
+  const { profile, getInitials } = useAuth();
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -84,12 +86,22 @@ const TopBar = ({ onMenuClick }: TopBarProps) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] dark:bg-[hsl(var(--color-lime))] text-white dark:text-[hsl(var(--color-teal))] text-xs font-semibold flex items-center justify-center hover:opacity-90 transition focus:outline-none">
-              JD
+              {profile?.avatar_url ? (
+                <img
+                  src={profile.avatar_url}
+                  alt="avatar"
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+              ) : (
+                <span className="text-xs font-semibold">
+                  {getInitials(profile?.full_name ?? profile?.email ?? null)}
+                </span>
+              )}
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem disabled className="text-xs text-neutral-400">
-              John D.
+              {profile?.full_name ?? profile?.email ?? "Account"}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
