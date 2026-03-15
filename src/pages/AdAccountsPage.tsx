@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
-import { CreditCard, Plus } from "lucide-react";
+import { CreditCard } from "lucide-react";
 
 const AdAccountsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -19,7 +19,7 @@ const AdAccountsPage = () => {
                 <p className="text-sm text-muted-foreground mt-1">Manage your connected advertising accounts</p>
               </div>
               <button className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition">
-                <Plus size={16} />
+                
                 + Connect Account
               </button>
             </div>
