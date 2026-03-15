@@ -20,6 +20,7 @@ interface TopBarProps {
 const TopBar = ({ onMenuClick }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
   const navigate = useNavigate();
+  const { profile, getInitials } = useAuth();
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
