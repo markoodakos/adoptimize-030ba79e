@@ -68,6 +68,9 @@ const SignupPage = () => {
       provider: "google",
       options: {
         redirectTo: window.location.origin + "/dashboard",
+        queryParams: {
+          prompt: "select_account",
+        },
       },
     });
   };
