@@ -3,16 +3,8 @@ import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X, LogOut 
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 import { supabase } from "@/integrations/supabase/client";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-
-const navItems = [
-  { icon: LayoutDashboard, label: "Overview", active: true },
-  { icon: CreditCard, label: "Ad Accounts", active: false },
-  { icon: Megaphone, label: "Campaigns", active: false },
-  { icon: BarChart2, label: "Analytics", active: false },
-  { icon: Settings, label: "Settings", active: false },
-];
 
 interface SidebarProps {
   isOpen: boolean;
