@@ -13,10 +13,19 @@ interface SidebarProps {
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { profile, getInitials } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
   const [isDark, setIsDark] = useState(
     () => document.documentElement.classList.contains("dark")
   );
+
+  const navItems = [
+    { label: "Overview", icon: LayoutDashboard, path: "/dashboard" },
+    { label: "Ad Accounts", icon: CreditCard, path: "/ad-accounts" },
+    { label: "Campaigns", icon: Megaphone, path: "/campaigns" },
+    { label: "Analytics", icon: BarChart2, path: "/analytics" },
+    { label: "Settings", icon: Settings, path: "/settings" },
+  ];
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -79,22 +88,30 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
         {/* Navigation */}
         <nav className="flex flex-col gap-1">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => {
-                if (window.innerWidth < 1024) onClose();
-              }}
-              className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-pill text-sm transition-all duration-200 ${
-                item.active
-                  ? "bg-accent text-[hsl(var(--color-teal))] dark:text-[hsl(var(--color-nearblack))] font-medium"
-                  : "text-[hsl(var(--color-teal))] dark:text-white/70 hover:opacity-80"
-              }`}
-            >
-              <item.icon size={16} className={item.active ? "" : "text-[hsl(var(--color-teal))]/70 dark:text-white/60"} />
-              <span>{item.label}</span>
-            </button>
-          ))}
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <button
+                key={item.path}
+                onClick={() => {
+                  navigate(item.path);
+                  if (window.innerWidth < 1024) onClose();
+                }}
+                className={`
+                  w-full flex items-center gap-3
+                  px-3 py-2.5 rounded-lg text-sm
+                  font-medium transition-all
+                  ${isActive
+                    ? "bg-[hsl(var(--color-lime))] text-[hsl(var(--color-teal))]"
+                    : "text-[hsl(var(--color-teal))]/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-[hsl(var(--color-teal))] dark:hover:text-white"
+                  }
+                `}
+              >
+                <item.icon size={18} />
+                {item.label}
+              </button>
+            );
+          })}
         </nav>
 
         {/* Mobile Connect Account */}
