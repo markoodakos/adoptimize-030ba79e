@@ -101,7 +101,7 @@ const TopBar = ({ onMenuClick }: TopBarProps) => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuItem disabled className="text-xs text-neutral-400">
-              John D.
+              {profile?.full_name ?? profile?.email ?? "Account"}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
