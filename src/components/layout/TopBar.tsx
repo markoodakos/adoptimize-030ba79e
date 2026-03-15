@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Search, Bell, Sun, Moon, Menu, HelpCircle } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";

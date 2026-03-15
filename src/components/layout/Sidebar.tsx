@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X } from "lucide-react";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
+import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Overview", active: true },
