@@ -18,6 +18,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+  const { profile, getInitials } = useAuth();
   const [isDark, setIsDark] = useState(
     () => document.documentElement.classList.contains("dark")
   );
