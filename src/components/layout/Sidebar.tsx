@@ -110,10 +110,20 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {/* User block */}
         <div className="mt-auto flex items-center gap-2 pt-6">
           <div className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] text-white dark:bg-[hsl(var(--color-lime))] dark:text-[hsl(var(--color-teal))] flex items-center justify-center flex-shrink-0">
-            <span className="text-xs font-medium">JD</span>
+            {profile?.avatar_url ? (
+              <img
+                src={profile.avatar_url}
+                alt="avatar"
+                className="w-8 h-8 rounded-full object-cover"
+              />
+            ) : (
+              <span className="text-xs font-medium">
+                {getInitials(profile?.full_name ?? profile?.email ?? null)}
+              </span>
+            )}
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-medium text-[hsl(var(--color-teal))] dark:text-white">John D.</span>
+            <span className="text-sm font-medium text-[hsl(var(--color-teal))] dark:text-white">{profile?.full_name ?? profile?.email ?? "Account"}</span>
           </div>
         </div>
       </aside>
