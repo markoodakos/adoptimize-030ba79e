@@ -84,7 +84,7 @@ const LoginPage = () => {
           </div>
 
           {/* Forgot password */}
-          <a href="#" className="text-sm text-primary hover:underline self-end -mt-2">
+          <a href="/forgot-password" className="text-sm text-primary hover:underline self-end -mt-2">
             Forgot password?
           </a>
         </div>
