@@ -29,15 +29,15 @@ const AdAccountsPage = () => {
               <h2 className="text-lg font-semibold text-foreground mb-2">No ad accounts connected</h2>
               <p className="text-sm text-muted-foreground max-w-md">Connect your first Facebook, Instagram or YouTube account to get started</p>
               <button className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition mt-6">
-                <Plus size={16} />
+                
                 + Connect Account
               </button>
             </div>
           </div>
         </main>
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default AdAccountsPage;
