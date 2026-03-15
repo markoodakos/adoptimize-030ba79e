@@ -86,7 +86,17 @@ const TopBar = ({ onMenuClick }: TopBarProps) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="w-8 h-8 rounded-full bg-[hsl(var(--color-teal))] dark:bg-[hsl(var(--color-lime))] text-white dark:text-[hsl(var(--color-teal))] text-xs font-semibold flex items-center justify-center hover:opacity-90 transition focus:outline-none">
-              JD
+              {profile?.avatar_url ? (
+                <img
+                  src={profile.avatar_url}
+                  alt="avatar"
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+              ) : (
+                <span className="text-xs font-semibold">
+                  {getInitials(profile?.full_name ?? profile?.email ?? null)}
+                </span>
+              )}
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
