@@ -11,6 +11,11 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
   const { toast } = useToast();
   const [activeTile, setActiveTile] = useState<string | null>(null);
 
+  const handleClose = () => {
+    setActiveTile(null);
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   const platforms = [
