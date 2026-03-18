@@ -10,6 +10,7 @@ interface TopBarProps {
   unreadCount?: number;
   onBellClick?: () => void;
   onConnectClick?: () => void;
+  onSupportClick?: () => void;
 }
 
 const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick, onConnectClick }: TopBarProps) => {
