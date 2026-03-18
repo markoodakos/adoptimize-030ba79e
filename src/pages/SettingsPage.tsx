@@ -110,6 +110,10 @@ const SettingsPage = () => {
           </div>
         </main>
       </div>
+      <ConnectAccountModal
+        isOpen={connectModalOpen}
+        onClose={() => setConnectModalOpen(false)}
+      />
     </div>
   );
 };
