@@ -55,6 +55,14 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
 
   const { toast } = useToast();
 
+  const handleCopy = async () => {
+    if (!modal) return;
+    await navigator.clipboard.writeText(modal.content);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+
   const handleAnalyze = async (account: { id: number; account: string; platform: string; spend: string }) => {
     setAnalyzingId(account.id);
     const spendNumber = parseFloat(account.spend.replace(/\$/g, "").replace(/,/g, ""));
