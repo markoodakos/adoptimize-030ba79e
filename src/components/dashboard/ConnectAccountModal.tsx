@@ -11,6 +11,11 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
   const { toast } = useToast();
   const [activeTile, setActiveTile] = useState<string | null>(null);
 
+  const handleClose = () => {
+    setActiveTile(null);
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   const platforms = [
@@ -30,7 +35,7 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleClose} />
         <div
           className="relative z-10 w-full max-w-md mx-4 rounded-2xl bg-[hsl(var(--color-teal))] text-foreground shadow-2xl overflow-hidden"
           onClick={(e) => e.stopPropagation()}
@@ -46,7 +51,7 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
               </p>
             </div>
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="text-[hsl(var(--color-offwhite))] opacity-50 hover:opacity-90 transition-opacity cursor-pointer"
             >
               <X size={18} />
@@ -97,7 +102,7 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
           {/* Footer */}
           <div className="px-6 py-4 border-t flex justify-end" style={{ borderColor: "#00454A" }}>
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="text-sm px-4 py-2 rounded-lg font-medium transition-opacity hover:opacity-80 cursor-pointer"
               style={{ background: "#00454A", color: "#ECFBA9" }}
             >

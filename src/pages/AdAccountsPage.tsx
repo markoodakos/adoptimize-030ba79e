@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
+import ConnectAccountModal from "@/components/dashboard/ConnectAccountModal";
 import { CreditCard } from "lucide-react";
 
 const AdAccountsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [connectModalOpen, setConnectModalOpen] = useState(false);
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -18,8 +20,10 @@ const AdAccountsPage = () => {
                 <h1 className="text-2xl font-bold text-foreground">Ad Accounts</h1>
                 <p className="text-sm text-muted-foreground mt-1">Manage your connected advertising accounts</p>
               </div>
-              <button className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition">
-                
+              <button
+                onClick={() => setConnectModalOpen(true)}
+                className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition"
+              >
                 + Connect Account
               </button>
             </div>
@@ -28,16 +32,22 @@ const AdAccountsPage = () => {
               <CreditCard size={48} className="text-muted-foreground mb-4" />
               <h2 className="text-lg font-semibold text-foreground mb-2">No ad accounts connected</h2>
               <p className="text-sm text-muted-foreground max-w-md">Connect your first Facebook, Instagram or YouTube account to get started</p>
-              <button className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition mt-6">
-                
+              <button
+                onClick={() => setConnectModalOpen(true)}
+                className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition mt-6"
+              >
                 + Connect Account
               </button>
             </div>
           </div>
         </main>
       </div>
-    </div>);
-
+      <ConnectAccountModal
+        isOpen={connectModalOpen}
+        onClose={() => setConnectModalOpen(false)}
+      />
+    </div>
+  );
 };
 
 export default AdAccountsPage;

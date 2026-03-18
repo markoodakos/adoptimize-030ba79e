@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
+import ConnectAccountModal from "@/components/dashboard/ConnectAccountModal";
 import { Megaphone, Filter } from "lucide-react";
 
 const CampaignsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigate = useNavigate();
+  const [connectModalOpen, setConnectModalOpen] = useState(false);
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -31,7 +31,7 @@ const CampaignsPage = () => {
               <h2 className="text-lg font-semibold text-foreground mb-2">No campaigns yet</h2>
               <p className="text-sm text-muted-foreground max-w-md">Your campaigns will appear here once you connect an ad account</p>
               <button
-                onClick={() => navigate("/ad-accounts")}
+                onClick={() => setConnectModalOpen(true)}
                 className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition mt-6"
               >
                 Connect an account
@@ -40,6 +40,10 @@ const CampaignsPage = () => {
           </div>
         </main>
       </div>
+      <ConnectAccountModal
+        isOpen={connectModalOpen}
+        onClose={() => setConnectModalOpen(false)}
+      />
     </div>
   );
 };
