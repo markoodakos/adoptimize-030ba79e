@@ -204,10 +204,18 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
                   );
                 })}
               </div>
-              <div className="px-6 py-4 border-t border-white/10 flex justify-end">
+              <div className="px-6 py-4 border-t flex justify-end gap-3" style={{ borderColor: "#00454A" }}>
+                <button
+                  onClick={handleCopy}
+                  className="text-sm px-4 py-2 rounded-lg font-medium transition-opacity hover:opacity-80"
+                  style={{ background: "#ECFBA9", color: "#00454A" }}
+                >
+                  {copied ? "Copied!" : "Copy"}
+                </button>
                 <button
                   onClick={() => setModal(null)}
-                  className="text-sm px-4 py-2 rounded-lg font-medium transition-opacity hover:opacity-80 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] border border-[hsl(var(--color-lime))]/30"
+                  className="text-sm px-4 py-2 rounded-lg font-medium transition-opacity hover:opacity-80"
+                  style={{ background: "#00454A", color: "#ECFBA9" }}
                 >
                   Close
                 </button>
