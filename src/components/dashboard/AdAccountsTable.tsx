@@ -58,12 +58,17 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
     const spendNumber = parseFloat(account.spend.replace(/\$/g, "").replace(/,/g, ""));
 
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const anonKey = (supabase as any).supabaseKey as string;
+
       const response = await fetch(
         "https://pelhygeorscmqhtiruuz.supabase.co/functions/v1/analyze-ad-account",
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${anonKey}`,
+            "apikey": anonKey
           },
           body: JSON.stringify({
             accountName: account.account,
