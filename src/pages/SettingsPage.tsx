@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
+import ConnectAccountModal from "@/components/dashboard/ConnectAccountModal";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Sun, Moon } from "lucide-react";
 
 const SettingsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [connectModalOpen, setConnectModalOpen] = useState(false);
   const { profile } = useAuth();
   const navigate = useNavigate();
   const [isDark, setIsDark] = useState(
@@ -36,7 +38,7 @@ const SettingsPage = () => {
     <div className="flex h-screen overflow-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex flex-col flex-1 overflow-hidden lg:ml-[210px]">
-        <TopBar onMenuClick={() => setSidebarOpen(true)} />
+        <TopBar onMenuClick={() => setSidebarOpen(true)} onConnectClick={() => setConnectModalOpen(true)} />
         <main className="flex-1 overflow-y-auto bg-background">
           <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
             <div className="flex items-center justify-between mb-8">
@@ -108,6 +110,10 @@ const SettingsPage = () => {
           </div>
         </main>
       </div>
+      <ConnectAccountModal
+        isOpen={connectModalOpen}
+        onClose={() => setConnectModalOpen(false)}
+      />
     </div>
   );
 };
