@@ -49,7 +49,7 @@ const statusPill = (status: Account["status"]) => {
   return <span className={`${base} ${color}`}>{status}</span>;
 };
 
-const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
+const AdAccountsTable = ({ onAnalyze, searchQuery }: AdAccountsTableProps) => {
   const [analyzingId, setAnalyzingId] = useState<number | null>(null);
   const [modal, setModal] = useState<{ accountName: string; content: string } | null>(null);
   const [copied, setCopied] = useState(false);
