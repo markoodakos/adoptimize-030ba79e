@@ -84,6 +84,7 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0
 
         {/* Connect Account — hidden below lg */}
         <Button
+          onClick={onConnectClick}
           className="hidden lg:flex bg-nearblack text-offwhite hover:bg-nearblack/90 rounded-pill text-sm font-medium px-4 py-2"
         >
           + Connect Account

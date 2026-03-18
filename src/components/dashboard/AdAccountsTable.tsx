@@ -125,7 +125,7 @@ const AdAccountsTable = ({ onAnalyze, searchQuery, onConnectClick }: AdAccountsT
       {/* Section Header */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="font-bold text-lg text-neutral-900 dark:text-neutral-100">Ad Accounts</h2>
-        <button className="bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] rounded-lg px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer">
+        <button onClick={onConnectClick} className="bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] rounded-lg px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer">
           + Connect Account
         </button>
       </div>
