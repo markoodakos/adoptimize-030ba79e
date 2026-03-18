@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Facebook, Instagram, Youtube, Loader2, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import type { AnalysisTarget } from "./AIAnalysisPanel";
 
 interface Account {
