@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Globe, Megaphone, MousePointer, Wallet, type LucideIcon } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface StatCardBadge {
   label: string;
