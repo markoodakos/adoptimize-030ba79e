@@ -43,6 +43,8 @@ const TopBar = ({ onMenuClick, searchQuery, onSearchChange }: TopBarProps) => {
         <Input
           placeholder="Search anything..."
           className="pl-8 bg-card border-border rounded-btn text-sm"
+          value={searchQuery}
+          onChange={(e) => onSearchChange(e.target.value)}
         />
       </div>
 
