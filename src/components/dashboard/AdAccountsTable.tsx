@@ -16,6 +16,7 @@ interface Account {
 
 interface AdAccountsTableProps {
   onAnalyze: (target: AnalysisTarget) => void;
+  searchQuery: string;
 }
 
 const accounts: Account[] = [
@@ -48,12 +49,21 @@ const statusPill = (status: Account["status"]) => {
   return <span className={`${base} ${color}`}>{status}</span>;
 };
 
-const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
+const AdAccountsTable = ({ onAnalyze, searchQuery }: AdAccountsTableProps) => {
   const [analyzingId, setAnalyzingId] = useState<number | null>(null);
   const [modal, setModal] = useState<{ accountName: string; content: string } | null>(null);
   const [copied, setCopied] = useState(false);
 
   const { toast } = useToast();
+
+  const filteredAccounts = accounts.filter((account) => {
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase().trim();
+    return (
+      account.platform.toLowerCase().includes(q) ||
+      account.account.toLowerCase().includes(q)
+    );
+  });
 
   const handleCopy = async () => {
     if (!modal) return;
@@ -133,13 +143,20 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
               </tr>
             </thead>
             <tbody>
-              {accounts.map((account, index) => (
+              {filteredAccounts.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="px-4 py-12 text-center text-sm text-neutral-400 dark:text-neutral-500">
+                    No accounts found matching your search.
+                  </td>
+                </tr>
+              ) : (
+                filteredAccounts.map((account, index) => (
                 <tr
                   key={account.id}
                   className={`
                     ${index % 2 === 0 ? "bg-neutral-50 dark:bg-neutral-800/40" : "bg-white dark:bg-neutral-900"}
                     hover:bg-neutral-100 dark:hover:bg-neutral-800/70
-                    ${index === accounts.length - 1 ? "border-b-0" : "border-b border-neutral-100 dark:border-neutral-800"}
+                    ${index === filteredAccounts.length - 1 ? "border-b-0" : "border-b border-neutral-100 dark:border-neutral-800"}
                     transition-colors duration-150
                   `}
                 >
@@ -171,7 +188,8 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
                     </button>
                   </td>
                 </tr>
-              ))}
+              ))
+              )}
             </tbody>
           </table>
         </div>
