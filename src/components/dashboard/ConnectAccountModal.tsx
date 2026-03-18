@@ -102,7 +102,7 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
           {/* Footer */}
           <div className="px-6 py-4 border-t flex justify-end" style={{ borderColor: "#00454A" }}>
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="text-sm px-4 py-2 rounded-lg font-medium transition-opacity hover:opacity-80 cursor-pointer"
               style={{ background: "#00454A", color: "#ECFBA9" }}
             >
