@@ -66,6 +66,13 @@ const NotificationsPanel = ({ isOpen, onClose, notifications, onMarkAllRead }: N
               className={`px-4 py-3 border-b border-border last:border-b-0 ${
                 !n.read ? "bg-primary/5" : ""
               }`}
+              style={{
+                borderColor: "#00454A",
+                opacity: n.read ? 0.45 : 1,
+                borderLeft: n.read
+                  ? "3px solid transparent"
+                  : "3px solid #ECFBA9"
+              }}
             >
               <p className="text-sm text-foreground">{n.message}</p>
               <span className="text-xs text-muted-foreground mt-1 block">{n.time}</span>
