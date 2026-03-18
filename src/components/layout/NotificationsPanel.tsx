@@ -71,7 +71,12 @@ const NotificationsPanel = ({ isOpen, onClose, notifications, onMarkAllRead }: N
                 opacity: n.read ? 0.45 : 1,
                 borderLeft: n.read
                   ? "3px solid transparent"
-                  : "3px solid #00454A"
+                  : `3px solid ${
+                      document.documentElement
+                        .classList.contains("dark")
+                        ? "#ECFBA9"
+                        : "#00454A"
+                    }`
               }}
             >
               <p className="text-sm text-foreground">{n.message}</p>
