@@ -9,6 +9,7 @@ import AIAnalysisPanel, { type AnalysisTarget } from "@/components/dashboard/AIA
 const DashboardLayout = () => {
   const [analysisTarget, setAnalysisTarget] = useState<AnalysisTarget | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className="flex h-screen overflow-hidden">
