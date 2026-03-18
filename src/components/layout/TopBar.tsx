@@ -11,7 +11,7 @@ interface TopBarProps {
   onBellClick?: () => void;
 }
 
-const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange }: TopBarProps) => {
+const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
