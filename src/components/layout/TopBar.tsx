@@ -9,7 +9,7 @@ interface TopBarProps {
   onSearchChange: (value: string) => void;
 }
 
-const TopBar = ({ onMenuClick }: TopBarProps) => {
+const TopBar = ({ onMenuClick, searchQuery, onSearchChange }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
