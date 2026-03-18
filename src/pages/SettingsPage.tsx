@@ -9,6 +9,7 @@ import { Sun, Moon } from "lucide-react";
 
 const SettingsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [connectModalOpen, setConnectModalOpen] = useState(false);
   const { profile } = useAuth();
   const navigate = useNavigate();
   const [isDark, setIsDark] = useState(
