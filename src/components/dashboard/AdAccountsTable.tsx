@@ -56,6 +56,15 @@ const AdAccountsTable = ({ onAnalyze, searchQuery }: AdAccountsTableProps) => {
 
   const { toast } = useToast();
 
+  const filteredAccounts = accounts.filter((account) => {
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase().trim();
+    return (
+      account.platform.toLowerCase().includes(q) ||
+      account.account.toLowerCase().includes(q)
+    );
+  });
+
   const handleCopy = async () => {
     if (!modal) return;
     await navigator.clipboard.writeText(modal.content);
