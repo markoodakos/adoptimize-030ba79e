@@ -7,9 +7,11 @@ interface TopBarProps {
   onMenuClick: () => void;
   searchQuery?: string;
   onSearchChange?: (value: string) => void;
+  unreadCount?: number;
+  onBellClick?: () => void;
 }
 
-const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange }: TopBarProps) => {
+const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -57,8 +59,18 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange }: TopBarProps) 
         </button>
 
         {/* 4. Bell */}
-        <button className="text-foreground/60 hover:text-foreground transition-colors">
+        <button
+          onClick={onBellClick}
+          className="relative p-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+        >
           <Bell size={18} />
+          {unreadCount > 0 && (
+            <span
+              className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-[10px] font-bold flex items-center justify-center bg-accent text-accent-foreground"
+            >
+              {unreadCount}
+            </span>
+          )}
         </button>
 
         {/* 5. Theme toggle */}
