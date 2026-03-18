@@ -10,9 +10,10 @@ interface TopBarProps {
   unreadCount?: number;
   onBellClick?: () => void;
   onConnectClick?: () => void;
+  onSupportClick?: () => void;
 }
 
-const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick, onConnectClick }: TopBarProps) => {
+const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick, onConnectClick, onSupportClick }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0
       {/* Right group */}
       <div className="ml-auto flex items-center gap-2 lg:gap-4">
         {/* 3. Support */}
-        <button className="flex items-center gap-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+        <button onClick={onSupportClick} className="flex items-center gap-1 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
           <HelpCircle size={18} />
           <span className="hidden lg:inline text-sm">Support</span>
         </button>
