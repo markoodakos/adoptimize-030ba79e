@@ -16,6 +16,7 @@ interface Account {
 
 interface AdAccountsTableProps {
   onAnalyze: (target: AnalysisTarget) => void;
+  searchQuery: string;
 }
 
 const accounts: Account[] = [
