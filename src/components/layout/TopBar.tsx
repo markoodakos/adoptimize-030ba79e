@@ -7,6 +7,8 @@ interface TopBarProps {
   onMenuClick: () => void;
   searchQuery?: string;
   onSearchChange?: (value: string) => void;
+  unreadCount?: number;
+  onBellClick?: () => void;
 }
 
 const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange }: TopBarProps) => {
