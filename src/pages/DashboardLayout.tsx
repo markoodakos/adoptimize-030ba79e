@@ -11,6 +11,7 @@ import AIAnalysisPanel, { type AnalysisTarget } from "@/components/dashboard/AIA
 const DashboardLayout = () => {
   const [analysisTarget, setAnalysisTarget] = useState<AnalysisTarget | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [connectModalOpen, setConnectModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [notifOpen, setNotifOpen] = useState(false);
   const [notifications, setNotifications] = useState([
