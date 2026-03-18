@@ -51,6 +51,8 @@ const statusPill = (status: Account["status"]) => {
 const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
   const [analyzingId, setAnalyzingId] = useState<number | null>(null);
   const [modal, setModal] = useState<{ accountName: string; content: string } | null>(null);
+  const [copied, setCopied] = useState(false);
+
   const { toast } = useToast();
 
   const handleAnalyze = async (account: { id: number; account: string; platform: string; spend: string }) => {
