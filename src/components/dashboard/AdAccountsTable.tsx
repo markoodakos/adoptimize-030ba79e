@@ -61,21 +61,27 @@ const AdAccountsTable = ({ onAnalyze }: AdAccountsTableProps) => {
         "https://pelhygeorscmqhtiruuz.supabase.co/functions/v1/analyze-ad-account",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json"
+          },
           body: JSON.stringify({
             accountName: account.account,
-            platform: account.platform,
-            spend: spendNumber,
+            platform:    account.platform,
+            spend:       spendNumber,
             impressions: 80000,
-            clicks: 1200,
-            conversions: 45,
-          }),
+            clicks:      1200,
+            conversions: 45
+          })
         }
       );
 
       const data = await response.json();
 
+      console.log("Edge function response:", data);
+      console.log("Response status:", response.status, response.ok);
+
       if (!response.ok || !data.success) {
+        console.error("Analysis error:", data);
         throw new Error(data.message ?? "Analysis failed");
       }
 
