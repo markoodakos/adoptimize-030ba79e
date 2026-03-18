@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 
@@ -6,6 +7,21 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
+  const [isDark, setIsDark] = useState(
+    () => document.documentElement.classList.contains("dark")
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen flex bg-[hsl(var(--color-offwhite))] dark:bg-[hsl(var(--color-nearblack))]">
       {/* Left Brand Panel */}
@@ -45,7 +61,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       <div className="w-full lg:w-1/2 bg-white dark:bg-neutral-900 flex items-center justify-center p-8 lg:p-16 min-h-screen">
         <div className="w-full max-w-[440px] mx-auto">
           <img
-            src={logoLight}
+            src={isDark ? logoDark : logoLight}
             alt="AdOptimize"
             className="h-8 w-auto object-contain mb-8"
           />
