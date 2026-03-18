@@ -51,7 +51,7 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
               </p>
             </div>
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="text-[hsl(var(--color-offwhite))] opacity-50 hover:opacity-90 transition-opacity cursor-pointer"
             >
               <X size={18} />
