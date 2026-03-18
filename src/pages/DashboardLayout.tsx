@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import NotificationsPanel from "@/components/layout/NotificationsPanel";
+import ConnectAccountModal from "@/components/dashboard/ConnectAccountModal";
 import StatCards from "@/components/dashboard/StatCards";
 import ChartsRow from "@/components/dashboard/ChartsRow";
 import AdAccountsTable from "@/components/dashboard/AdAccountsTable";
