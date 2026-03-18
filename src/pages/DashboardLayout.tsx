@@ -36,6 +36,7 @@ const DashboardLayout = () => {
         <TopBar onMenuClick={() => setSidebarOpen(true)} searchQuery={searchQuery} onSearchChange={setSearchQuery} unreadCount={unreadCount} onBellClick={() => setNotifOpen(prev => !prev)} onConnectClick={() => setConnectModalOpen(true)} onSupportClick={() => setSupportModalOpen(true)} />
         <NotificationsPanel isOpen={notifOpen} onClose={() => setNotifOpen(false)} notifications={notifications} onMarkAllRead={handleMarkAllRead} />
         <ConnectAccountModal isOpen={connectModalOpen} onClose={() => setConnectModalOpen(false)} />
+        <SupportModal isOpen={supportModalOpen} onClose={() => setSupportModalOpen(false)} />
         <main className="flex-1 overflow-y-auto bg-background">
           <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
             <div className="mb-6"><StatCards /></div>

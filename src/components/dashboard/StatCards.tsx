@@ -74,9 +74,36 @@ const StatCard = ({ icon: Icon, value, label, sub, badge }: StatCardProps) => {
 };
 
 const StatCards = () => {
+  const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getName = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.user) return;
+      const fullName = session.user.user_metadata?.full_name;
+      if (fullName) { setUserName(fullName); return; }
+      const email = session.user.email;
+      if (email) { setUserName(email.split("@")[0]); return; }
+      setUserName(null);
+    };
+    getName();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (!session?.user) { setUserName(null); return; }
+      const fullName = session.user.user_metadata?.full_name;
+      if (fullName) { setUserName(fullName); }
+      else if (session.user.email) { setUserName(session.user.email.split("@")[0]); }
+      else { setUserName(null); }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-foreground mb-1">Welcome back, John D.</h2>
+      <h2 className="text-2xl font-semibold text-foreground mb-1">
+        {userName ? `Welcome back, ${userName}.` : "Welcome back!"}
+      </h2>
       <p className="text-sm text-muted-foreground mb-6">
         Here's how your ad accounts are performing.
       </p>
