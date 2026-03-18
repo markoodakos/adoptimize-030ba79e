@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 
 interface TopBarProps {
   onMenuClick: () => void;
-  searchQuery: string;
-  onSearchChange: (value: string) => void;
+  searchQuery?: string;
+  onSearchChange?: (value: string) => void;
 }
 
-const TopBar = ({ onMenuClick, searchQuery, onSearchChange }: TopBarProps) => {
+const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
