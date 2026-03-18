@@ -33,7 +33,7 @@ const DashboardLayout = () => {
     <div className="flex h-screen overflow-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex flex-col flex-1 overflow-hidden lg:ml-[210px]">
-        <TopBar onMenuClick={() => setSidebarOpen(true)} searchQuery={searchQuery} onSearchChange={setSearchQuery} unreadCount={unreadCount} onBellClick={() => setNotifOpen(prev => !prev)} onConnectClick={() => setConnectModalOpen(true)} />
+        <TopBar onMenuClick={() => setSidebarOpen(true)} searchQuery={searchQuery} onSearchChange={setSearchQuery} unreadCount={unreadCount} onBellClick={() => setNotifOpen(prev => !prev)} onConnectClick={() => setConnectModalOpen(true)} onSupportClick={() => setSupportModalOpen(true)} />
         <NotificationsPanel isOpen={notifOpen} onClose={() => setNotifOpen(false)} notifications={notifications} onMarkAllRead={handleMarkAllRead} />
         <ConnectAccountModal isOpen={connectModalOpen} onClose={() => setConnectModalOpen(false)} />
         <main className="flex-1 overflow-y-auto bg-background">
