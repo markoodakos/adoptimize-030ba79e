@@ -12,4 +12,5 @@ declare module 'recharts' {
   export const Tooltip: any;
   export const Legend: any;
   export const ResponsiveContainer: any;
+  export type LegendProps = any;
 }
