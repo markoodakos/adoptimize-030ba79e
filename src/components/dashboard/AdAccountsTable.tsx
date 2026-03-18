@@ -17,6 +17,7 @@ interface Account {
 interface AdAccountsTableProps {
   onAnalyze: (target: AnalysisTarget) => void;
   searchQuery: string;
+  onConnectClick?: () => void;
 }
 
 const accounts: Account[] = [
@@ -49,7 +50,7 @@ const statusPill = (status: Account["status"]) => {
   return <span className={`${base} ${color}`}>{status}</span>;
 };
 
-const AdAccountsTable = ({ onAnalyze, searchQuery }: AdAccountsTableProps) => {
+const AdAccountsTable = ({ onAnalyze, searchQuery, onConnectClick }: AdAccountsTableProps) => {
   const [analyzingId, setAnalyzingId] = useState<number | null>(null);
   const [modal, setModal] = useState<{ accountName: string; content: string } | null>(null);
   const [copied, setCopied] = useState(false);
@@ -124,7 +125,7 @@ const AdAccountsTable = ({ onAnalyze, searchQuery }: AdAccountsTableProps) => {
       {/* Section Header */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="font-bold text-lg text-neutral-900 dark:text-neutral-100">Ad Accounts</h2>
-        <button className="bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] rounded-lg px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer">
+        <button onClick={onConnectClick} className="bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] rounded-lg px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer">
           + Connect Account
         </button>
       </div>
