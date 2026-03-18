@@ -13,7 +13,7 @@ interface TopBarProps {
   onSupportClick?: () => void;
 }
 
-const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick, onConnectClick }: TopBarProps) => {
+const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick, onConnectClick, onSupportClick }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
