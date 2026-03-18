@@ -15,17 +15,9 @@ const AdAccountsPage = () => {
         <TopBar onMenuClick={() => setSidebarOpen(true)} />
         <main className="flex-1 overflow-y-auto bg-background">
           <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h1 className="text-2xl font-bold text-foreground">Ad Accounts</h1>
-                <p className="text-sm text-muted-foreground mt-1">Manage your connected advertising accounts</p>
-              </div>
-              <button
-                onClick={() => setConnectModalOpen(true)}
-                className="flex items-center gap-2 bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] font-semibold rounded-lg px-4 py-2 text-sm hover:opacity-90 transition"
-              >
-                + Connect Account
-              </button>
+            <div className="mb-8">
+              <h1 className="text-2xl font-bold text-foreground">Ad Accounts</h1>
+              <p className="text-sm text-muted-foreground mt-1">Manage your connected advertising accounts</p>
             </div>
 
             <div className="flex flex-col items-center justify-center py-24 text-center">
