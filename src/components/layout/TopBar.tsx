@@ -11,10 +11,12 @@ interface TopBarProps {
   onBellClick?: () => void;
   onConnectClick?: () => void;
   onSupportClick?: () => void;
+  currentRoute?: string;
 }
 
-const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick, onConnectClick, onSupportClick }: TopBarProps) => {
+const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0, onBellClick, onConnectClick, onSupportClick, currentRoute = "/dashboard" }: TopBarProps) => {
   const [isDark, setIsDark] = useState(false);
+  const [searchTooltip, setSearchTooltip] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("adoptimize-theme");
@@ -28,6 +30,9 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0
     localStorage.setItem("adoptimize-theme", next ? "dark" : "light");
   };
 
+  const isReadOnly = currentRoute === "/campaigns" || currentRoute === "/analytics";
+  const isHidden = currentRoute === "/settings";
+
   return (
     <header className="sticky top-0 z-10 h-16 bg-background border-b border-border border-b-neutral-100 dark:border-b-neutral-800 px-6 flex items-center gap-2 w-full">
       {/* 1. Hamburger — mobile only */}
@@ -39,18 +44,37 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0
       </button>
 
       {/* 2. Search */}
-      <div className="relative hidden min-[420px]:flex min-[420px]:w-full md:w-[180px] lg:w-[280px]">
-        <Search
-          size={14}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
-        />
-        <Input
-          placeholder="Search anything..."
-          className="pl-8 bg-card border-border rounded-btn text-sm"
-          value={searchQuery}
-          onChange={(e) => onSearchChange?.(e.target.value)}
-        />
-      </div>
+      {!isHidden && (
+        <div className="relative hidden min-[420px]:flex min-[420px]:w-full md:w-[180px] lg:w-[280px]">
+          <div className="relative w-full">
+            <Search
+              size={14}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+            />
+            <Input
+              placeholder="Search anything..."
+              className="pl-8 bg-card border-border rounded-btn text-sm"
+              value={searchQuery}
+              onChange={(e) => onSearchChange?.(e.target.value)}
+              readOnly={isReadOnly}
+              onFocus={() => {
+                if (isReadOnly) setSearchTooltip(true);
+              }}
+              onBlur={() => setSearchTooltip(false)}
+            />
+            {searchTooltip && isReadOnly && (
+              <div
+                className="absolute top-full left-0 mt-2 z-50 px-3 py-1.5 rounded-full text-xs font-medium text-white animate-in fade-in duration-150 whitespace-nowrap"
+                style={{ background: "rgba(0,0,0,0.75)" }}
+              >
+                {currentRoute === "/campaigns"
+                  ? "Connect an account to search campaigns"
+                  : "Connect an account to search analytics"}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Right group */}
       <div className="ml-auto flex items-center gap-2 lg:gap-4">
