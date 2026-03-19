@@ -24,6 +24,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     { label: "Ad Accounts", icon: CreditCard, path: "/ad-accounts" },
     { label: "Campaigns", icon: Megaphone, path: "/campaigns" },
     { label: "Analytics", icon: BarChart2, path: "/analytics" },
+    { label: "Pricing", icon: Tag, path: "/pricing" },
     { label: "Settings", icon: Settings, path: "/settings" },
   ];
 
