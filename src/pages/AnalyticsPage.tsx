@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import ConnectAccountModal from "@/components/dashboard/ConnectAccountModal";
 import { BarChart2, Calendar } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
+const dateOptions = ["Last 7 days", "Last 30 days", "Last 90 days", "This year"];
 
 const AnalyticsPage = () => {
+  const { toast } = useToast();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [connectModalOpen, setConnectModalOpen] = useState(false);
+  const [dateOpen, setDateOpen] = useState(false);
+  const [dateRange, setDateRange] = useState("Last 30 days");
+  const dateRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dateRef.current && !dateRef.current.contains(e.target as Node)) {
+        setDateOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -20,10 +37,39 @@ const AnalyticsPage = () => {
                 <h1 className="text-2xl font-bold text-foreground">Analytics</h1>
                 <p className="text-sm text-muted-foreground mt-1">Deep dive into your ad performance data</p>
               </div>
-              <button className="flex items-center gap-2 border border-neutral-200 dark:border-neutral-700 rounded-lg px-4 py-2 text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
-                <Calendar size={16} />
-                Last 30 days
-              </button>
+              <div className="relative" ref={dateRef}>
+                <button
+                  onClick={() => setDateOpen(prev => !prev)}
+                  className="flex items-center gap-2 border border-neutral-200 dark:border-neutral-700 rounded-lg px-4 py-2 text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+                >
+                  <Calendar size={16} />
+                  {dateRange}
+                </button>
+                {dateOpen && (
+                  <div className="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-card shadow-lg z-50 py-1">
+                    {dateOptions.map((option) => (
+                      <button
+                        key={option}
+                        onClick={() => {
+                          setDateRange(option);
+                          setDateOpen(false);
+                          toast({
+                            title: "Date range updated",
+                            description: "Data will reflect once accounts are connected.",
+                          });
+                        }}
+                        className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                          dateRange === option
+                            ? "bg-[hsl(var(--color-teal))]/10 text-[hsl(var(--color-teal))] font-medium"
+                            : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="flex flex-col items-center justify-center py-24 text-center">
