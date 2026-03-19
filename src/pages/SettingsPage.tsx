@@ -24,6 +24,7 @@ const SettingsPage = () => {
   const handleMarkAllRead = () => {
     setNotifications(prev => prev.map(n => ({ ...n, read: true })));
   };
+  const { profile } = useAuth();
   const navigate = useNavigate();
   const [isDark, setIsDark] = useState(
     () => document.documentElement.classList.contains("dark")
