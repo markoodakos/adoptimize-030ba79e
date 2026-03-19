@@ -30,7 +30,7 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0
     localStorage.setItem("adoptimize-theme", next ? "dark" : "light");
   };
 
-  const isReadOnly = currentRoute === "/campaigns" || currentRoute === "/analytics";
+  const isReadOnly = currentRoute === "/campaigns" || currentRoute === "/analytics" || currentRoute === "/ad-accounts";
   const isHidden = currentRoute === "/settings";
 
   return (
@@ -65,11 +65,13 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0
             {searchTooltip && isReadOnly && (
               <div
                 className="absolute top-full left-0 mt-2 z-50 px-3 py-1.5 rounded-full text-xs font-medium text-white animate-in fade-in duration-150 whitespace-nowrap"
-                style={{ background: "rgba(0,0,0,0.75)" }}
+                style={{ background: "#0a1a1a", border: "1px solid #00454A" }}
               >
                 {currentRoute === "/campaigns"
                   ? "Connect an account to search campaigns"
-                  : "Connect an account to search analytics"}
+                  : currentRoute === "/ad-accounts"
+                    ? "Connect an account to search ad accounts"
+                    : "Connect an account to search analytics"}
               </div>
             )}
           </div>
