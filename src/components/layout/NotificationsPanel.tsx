@@ -51,7 +51,7 @@ const NotificationsPanel = ({ isOpen, onClose, notifications, onMarkAllRead }: N
             </button>
             <button
               onClick={onClose}
-              className="text-neutral-400 dark:text-neutral-500 hover:text-foreground transition-colors"
+              className="text-neutral-400 dark:text-neutral-500 hover:text-foreground dark:hover:bg-lime dark:hover:text-accent-foreground rounded p-0.5 transition-colors"
             >
               <X size={16} />
             </button>
