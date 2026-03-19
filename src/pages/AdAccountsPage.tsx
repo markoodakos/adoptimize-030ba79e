@@ -28,7 +28,7 @@ const AdAccountsPage = () => {
     <div className="flex h-screen overflow-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex flex-col flex-1 overflow-hidden lg:ml-[210px]">
-        <TopBar onMenuClick={() => setSidebarOpen(true)} onConnectClick={() => setConnectModalOpen(true)} unreadCount={unreadCount} onBellClick={() => setNotifOpen(prev => !prev)} onSupportClick={() => setSupportModalOpen(true)} searchQuery={searchQuery} currentRoute="/ad-accounts" />
+        <TopBar onMenuClick={() => setSidebarOpen(true)} onConnectClick={() => setConnectModalOpen(true)} unreadCount={unreadCount} onBellClick={() => setNotifOpen(prev => !prev)} onSupportClick={() => setSupportModalOpen(true)} searchQuery={searchQuery} onSearchChange={setSearchQuery} currentRoute="/ad-accounts" />
         <NotificationsPanel isOpen={notifOpen} onClose={() => setNotifOpen(false)} notifications={notifications} onMarkAllRead={handleMarkAllRead} />
         <main className="flex-1 overflow-y-auto bg-background">
           <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
