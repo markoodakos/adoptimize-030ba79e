@@ -6,7 +6,11 @@ import SupportModal from "@/components/layout/SupportModal";
 import NotificationsPanel from "@/components/layout/NotificationsPanel";
 import { CreditCard } from "lucide-react";
 
-const AdAccountsPage = () => {
+interface AdAccountsPageProps {
+  searchQuery?: string;
+}
+
+const AdAccountsPage = ({ searchQuery = "" }: AdAccountsPageProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [connectModalOpen, setConnectModalOpen] = useState(false);
   const [supportModalOpen, setSupportModalOpen] = useState(false);
