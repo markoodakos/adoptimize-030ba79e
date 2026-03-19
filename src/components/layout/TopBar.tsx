@@ -86,7 +86,7 @@ const TopBar = ({ onMenuClick, searchQuery = "", onSearchChange, unreadCount = 0
         {/* Connect Account — hidden below lg */}
         <Button
           onClick={onConnectClick}
-          className="hidden lg:flex bg-nearblack text-offwhite hover:opacity-90 hover:bg-[hsl(var(--color-teal))]/80 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 rounded-pill text-sm font-medium px-4 py-2"
+          className="hidden lg:flex bg-nearblack text-offwhite hover:bg-[hsl(var(--color-teal))] dark:hover:opacity-90 transition-colors duration-150 rounded-pill text-sm font-medium px-4 py-2"
         >
           + Connect Account
         </Button>
