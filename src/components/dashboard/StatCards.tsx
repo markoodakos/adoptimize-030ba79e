@@ -49,7 +49,7 @@ const StatCard = ({ icon: Icon, value, label, sub, badge }: StatCardProps) => {
   return (
     <div className="bg-card text-card-foreground rounded-[var(--radius-card)] shadow-card p-5 flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <div className="bg-[hsl(var(--color-teal))]/10 rounded-lg p-2 w-fit">
+        <div className="p-2 w-fit">
           <Icon size={18} className="text-teal" />
         </div>
         {badge && (
