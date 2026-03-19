@@ -19,16 +19,16 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
   if (!isOpen) return null;
 
   const platforms = [
-    { id: "facebook", label: "Facebook Ads", icon: Globe },
-    { id: "instagram", label: "Instagram Ads", icon: Camera },
-    { id: "youtube", label: "YouTube Ads", icon: Play },
-  ];
+  { id: "facebook", label: "Facebook Ads", icon: Globe },
+  { id: "instagram", label: "Instagram Ads", icon: Camera },
+  { id: "youtube", label: "YouTube Ads", icon: Play }];
+
 
   const handleTileClick = (platformLabel: string, platformId: string) => {
     setActiveTile(platformId);
     toast({
       title: `${platformLabel} integration coming soon`,
-      description: "We'll notify you when this platform is available.",
+      description: "We'll notify you when this platform is available."
     });
   };
 
@@ -38,8 +38,8 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleClose} />
         <div
           className="relative z-10 w-full max-w-md mx-4 rounded-2xl bg-[hsl(var(--color-teal))] text-foreground shadow-2xl overflow-hidden"
-          onClick={(e) => e.stopPropagation()}
-        >
+          onClick={(e) => e.stopPropagation()}>
+          
           {/* Header */}
           <div className="flex items-start justify-between px-6 pt-6 pb-2">
             <div>
@@ -52,8 +52,8 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
             </div>
             <button
               onClick={handleClose}
-              className="text-[hsl(var(--color-offwhite))] opacity-50 hover:opacity-90 transition-opacity cursor-pointer"
-            >
+              className="text-[hsl(var(--color-offwhite))] opacity-50 hover:opacity-90 transition-opacity cursor-pointer">
+              
               <X size={18} />
             </button>
           </div>
@@ -70,7 +70,7 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
                   className="relative flex flex-col items-center justify-center gap-3 rounded-xl py-6 px-4 transition-all duration-200 cursor-pointer"
                   style={{
                     background: "rgba(0, 69, 74, 0.15)",
-                    border: isActive ? "1px solid #ECFBA9" : "1px solid #00454A",
+                    border: isActive ? "1px solid #ECFBA9" : "1px solid #00454A"
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
@@ -83,36 +83,36 @@ const ConnectAccountModal = ({ isOpen, onClose }: ConnectAccountModalProps) => {
                       (e.currentTarget as HTMLButtonElement).style.borderColor = "#00454A";
                       (e.currentTarget as HTMLButtonElement).style.background = "rgba(0, 69, 74, 0.15)";
                     }
-                  }}
-                >
+                  }}>
+                  
                   <Icon size={28} className="text-[hsl(var(--color-lime))]" />
                   <span className="text-xs font-medium text-[hsl(var(--color-offwhite))]">
                     {platform.label}
                   </span>
-                  {isActive && (
-                    <span className="absolute top-2 right-2 text-[9px] font-bold uppercase tracking-wide bg-[hsl(var(--color-lime))] text-[hsl(var(--color-teal))] rounded-full px-2 py-0.5">
+                  {isActive &&
+                  <span className="absolute top-2 right-2 text-[9px] font-bold uppercase tracking-wide bg-[hsl(var(--color-lime))] text-[hsl(var(--color-teal))] rounded-full px-2 py-0.5">
                       Soon
                     </span>
-                  )}
-                </button>
-              );
+                  }
+                </button>);
+
             })}
           </div>
 
           {/* Footer */}
           <div className="px-6 py-4 border-t flex justify-end" style={{ borderColor: "#00454A" }}>
-            <button
-              onClick={handleClose}
-              className="text-sm px-4 py-2 rounded-lg font-medium transition-opacity hover:opacity-80 cursor-pointer"
-              style={{ background: "#00454A", color: "#ECFBA9" }}
-            >
-              Close
-            </button>
+            
+
+
+
+
+
+            
           </div>
         </div>
       </div>
-    </>
-  );
+    </>);
+
 };
 
 export default ConnectAccountModal;
