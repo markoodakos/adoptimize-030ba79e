@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X, LogOut } from "lucide-react";
+import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Tag, Settings, X, LogOut } from "lucide-react";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 import { supabase } from "@/integrations/supabase/client";
@@ -24,6 +24,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     { label: "Ad Accounts", icon: CreditCard, path: "/ad-accounts" },
     { label: "Campaigns", icon: Megaphone, path: "/campaigns" },
     { label: "Analytics", icon: BarChart2, path: "/analytics" },
+    { label: "Pricing", icon: Tag, path: "/pricing" },
     { label: "Settings", icon: Settings, path: "/settings" },
   ];
 
