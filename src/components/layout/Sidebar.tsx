@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Settings, X, LogOut } from "lucide-react";
+import { LayoutDashboard, CreditCard, Megaphone, BarChart2, Tag, Settings, X, LogOut } from "lucide-react";
 import logoLight from "@/assets/brand/adoptimize_logo_light.svg";
 import logoDark from "@/assets/brand/adoptimize_logo_dark.svg";
 import { supabase } from "@/integrations/supabase/client";
