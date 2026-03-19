@@ -103,10 +103,8 @@ const CampaignsPage = () => {
           </div>
         </main>
       </div>
-      <ConnectAccountModal
-        isOpen={connectModalOpen}
-        onClose={() => setConnectModalOpen(false)}
-      />
+      <ConnectAccountModal isOpen={connectModalOpen} onClose={() => setConnectModalOpen(false)} />
+      <SupportModal isOpen={supportModalOpen} onClose={() => setSupportModalOpen(false)} />
     </div>
   );
 };
