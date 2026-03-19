@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import ConnectAccountModal from "@/components/dashboard/ConnectAccountModal";
+import SupportModal from "@/components/layout/SupportModal";
+import NotificationsPanel from "@/components/layout/NotificationsPanel";
 import { Megaphone, Filter } from "lucide-react";
 
 const platforms = ["All Platforms", "Facebook", "Instagram", "YouTube"];
