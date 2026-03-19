@@ -11,6 +11,18 @@ const platforms = ["All Platforms", "Facebook", "Instagram", "YouTube"];
 const CampaignsPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [connectModalOpen, setConnectModalOpen] = useState(false);
+  const [supportModalOpen, setSupportModalOpen] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
+  const [notifications, setNotifications] = useState([
+    { id: 1, message: "Nike Campaign CTR dropped below 2%", time: "2 hours ago", read: false },
+    { id: 2, message: "Reebok Feed spend limit at 85%", time: "5 hours ago", read: false },
+    { id: 3, message: "Puma Pre-roll has exited learning phase", time: "1 day ago", read: false },
+    { id: 4, message: "Adidas Stories conversion rate improved +12%", time: "2 days ago", read: true },
+  ]);
+  const unreadCount = notifications.filter(n => !n.read).length;
+  const handleMarkAllRead = () => {
+    setNotifications(prev => prev.map(n => ({ ...n, read: true })));
+  };
   const [filterOpen, setFilterOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All Platforms");
   const filterRef = useRef<HTMLDivElement>(null);
