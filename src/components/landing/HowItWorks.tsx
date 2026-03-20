@@ -45,20 +45,22 @@ const HowItWorks = () => {
           <div
             className="hidden md:block absolute"
             style={{
-              top: "24px",
-              left: "calc(16.66% + 24px)",
-              right: "calc(50% + 24px)",
-              borderTop: "2px dashed rgba(0,69,74,0.3)"
+              top: "50%",
+              transform: "translateY(-50%)",
+              left: "calc(16.666% + 40px)",
+              right: "calc(50% + 40px)",
+              borderTop: "2px dashed rgba(236,251,169,0.4)"
             }}
           />
           {/* Segment 2: step 2 → step 3 */}
           <div
             className="hidden md:block absolute"
             style={{
-              top: "24px",
-              left: "calc(50% + 24px)",
-              right: "calc(16.66% + 24px)",
-              borderTop: "2px dashed rgba(0,69,74,0.3)"
+              top: "50%",
+              transform: "translateY(-50%)",
+              left: "calc(50% + 40px)",
+              right: "calc(16.666% + 40px)",
+              borderTop: "2px dashed rgba(236,251,169,0.4)"
             }}
           />
 
