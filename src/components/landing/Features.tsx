@@ -38,7 +38,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section style={{ background: "#060606" }} className="py-24 md:py-32">
+    <section id="features" style={{ background: "#060606" }} className="py-24 md:py-32">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
 
         {/* Header */}

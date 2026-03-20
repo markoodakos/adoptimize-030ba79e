@@ -4,6 +4,10 @@ import Features from "@/components/landing/Features"
 import HowItWorks from "@/components/landing/HowItWorks"
 import KeyBenefits from "@/components/landing/KeyBenefits"
 import SocialProof from "@/components/landing/SocialProof"
+import PricingPreview from "@/components/landing/PricingPreview"
+import About from "@/components/landing/About"
+import CtaBanner from "@/components/landing/CtaBanner"
+import Footer from "@/components/landing/Footer"
 import SupportModal from "@/components/layout/SupportModal"
 import { useState } from "react"
 
@@ -18,9 +22,10 @@ const Landing = () => {
       <HowItWorks />
       <KeyBenefits />
       <SocialProof />
-
-      {/* About section anchor */}
-      <div id="about" />
+      <PricingPreview onContactClick={() => setSupportOpen(true)} />
+      <About />
+      <CtaBanner />
+      <Footer onContactClick={() => setSupportOpen(true)} />
 
       <SupportModal
         isOpen={supportOpen}
