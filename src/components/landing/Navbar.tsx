@@ -12,6 +12,7 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [signInHovered, setSignInHovered] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {

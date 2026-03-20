@@ -7,17 +7,20 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative pt-32 pb-20 px-6 overflow-hidden"
+      className="relative pt-32 pb-20 px-6 md:px-12 overflow-hidden"
       style={{ background: "#060606" }}
     >
-      <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+      <div className="max-w-[1280px] mx-auto flex flex-col items-center text-center">
         {/* 1. BADGE */}
         <span
-          className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide mb-8"
+          className="inline-block rounded-full tracking-wide mb-8"
           style={{
             background: "rgba(236,251,169,0.1)",
             color: "#ECFBA9",
             border: "1px solid rgba(236,251,169,0.2)",
+            fontSize: "15px",
+            padding: "8px 20px",
+            fontWeight: 500,
           }}
         >
           AI-Powered Ad Optimization
@@ -25,8 +28,8 @@ const Hero = () => {
 
         {/* 2. HEADLINE */}
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
-          style={{ color: "#FCFCFC" }}
+          className="font-bold leading-tight mb-6"
+          style={{ color: "#FCFCFC", fontSize: "clamp(56px, 8vw, 96px)" }}
         >
           Scale Your Ads.
           <br />
@@ -102,7 +105,7 @@ const Hero = () => {
         </div>
 
         {/* 7. STATS CARDS ROW */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-xl mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-[1280px] mb-16">
           {[
             { value: "2,400+", label: "Ads Analyzed" },
             { value: "38%", label: "Avg. Performance Lift" },
@@ -110,21 +113,22 @@ const Hero = () => {
           ].map((stat, i) => (
             <div
               key={i}
-              className="rounded-xl py-5 px-4 text-center"
+              className="rounded-xl text-center"
               style={{
                 background: "rgba(252,252,252,0.04)",
                 border: "1px solid rgba(252,252,252,0.08)",
+                padding: "28px 40px",
+                minWidth: "200px",
               }}
             >
               <div
-                className="text-2xl font-bold mb-1"
-                style={{ color: "#ECFBA9" }}
+                className="font-bold mb-1"
+                style={{ color: "#ECFBA9", fontSize: "36px" }}
               >
                 {stat.value}
               </div>
               <div
-                className="text-xs"
-                style={{ color: "rgba(252,252,252,0.5)" }}
+                style={{ color: "rgba(252,252,252,0.5)", fontSize: "14px" }}
               >
                 {stat.label}
               </div>
@@ -133,7 +137,7 @@ const Hero = () => {
         </div>
 
         {/* 8. DASHBOARD SCREENSHOT */}
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-[1100px]">
           <img
             src="/images/screen-dashboard.png"
             alt="AdOptimize Dashboard"
