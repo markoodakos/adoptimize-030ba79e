@@ -40,24 +40,11 @@ const HowItWorks = () => {
         {/* Steps row */}
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
 
-          {/* Line segment 1: between step 1 and step 2 */}
+          {/* Dashed connector line — desktop only */}
           <div
-            className="hidden md:block absolute"
+            className="hidden md:block absolute top-8 left-[20%] right-[20%] h-px"
             style={{
-              top: "24px",
-              left: "calc(16.666% + 40px)",
-              width: "calc(33.333% - 80px)",
-              borderTop: "2px dashed rgba(0,69,74,0.3)"
-            }}
-          />
-          {/* Line segment 2: between step 2 and step 3 */}
-          <div
-            className="hidden md:block absolute"
-            style={{
-              top: "24px",
-              left: "calc(50% + 40px)",
-              width: "calc(33.333% - 80px)",
-              borderTop: "2px dashed rgba(0,69,74,0.3)"
+              borderTop: "2px dashed rgba(236,251,169,0.25)"
             }}
           />
 
