@@ -45,8 +45,7 @@ const HowItWorks = () => {
           <div
             className="hidden md:block absolute"
             style={{
-              top: "50%",
-              transform: "translateY(-50%)",
+              top: "32px",
               left: "calc(16.666% + 40px)",
               right: "calc(50% + 40px)",
               borderTop: "2px dashed rgba(236,251,169,0.4)"
@@ -56,8 +55,7 @@ const HowItWorks = () => {
           <div
             className="hidden md:block absolute"
             style={{
-              top: "50%",
-              transform: "translateY(-50%)",
+              top: "32px",
               left: "calc(50% + 40px)",
               right: "calc(16.666% + 40px)",
               borderTop: "2px dashed rgba(236,251,169,0.4)"
