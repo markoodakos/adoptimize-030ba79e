@@ -11,19 +11,17 @@ const benefits = [
 const KeyBenefits = () => {
   return (
     <section style={{ background: "#060606" }} className="py-24 md:py-32">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 items-center" style={{ gap: "80px" }}>
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
         {/* LEFT — Screenshot */}
         <div className="order-2 md:order-1">
           <img
-            src="/images/screen-analytics.png"
+            src="/screen-analytics.png"
             alt="AdOptimize analytics dashboard"
-            className="w-full"
+            className="w-full rounded-2xl"
             style={{
-              maxWidth: "560px",
-              borderRadius: "16px",
               border: "1px solid rgba(255,255,255,0.08)",
-              boxShadow: "0 24px 60px rgba(0,0,0,0.4)"
+              boxShadow: "0 32px 80px rgba(0,0,0,0.5)"
             }}
             onError={e => {
               (e.currentTarget as HTMLImageElement).style.display = "none"
