@@ -108,11 +108,19 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
               <>
                 <button
                   onClick={() => navigate("/login")}
-                  className="px-4 py-2 text-sm font-medium transition-colors"
+                  onMouseEnter={() => setSignInHovered(true)}
+                  onMouseLeave={() => setSignInHovered(false)}
+                  className="px-4 py-2 text-sm font-medium"
                   style={{
-                    color: "rgba(252,252,252,0.7)",
-                    border: "1px solid rgba(252,252,252,0.2)",
+                    border: signInHovered
+                      ? "1px solid rgba(252,252,252,0.5)"
+                      : "1px solid rgba(252,252,252,0.3)",
+                    color: "#FCFCFC",
+                    background: signInHovered
+                      ? "rgba(255,255,255,0.08)"
+                      : "transparent",
                     borderRadius: "8px",
+                    transition: "all 0.2s ease",
                   }}
                 >
                   Sign In
