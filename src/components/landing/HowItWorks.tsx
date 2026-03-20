@@ -41,10 +41,24 @@ const HowItWorks = () => {
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
 
           {/* Dashed connector line — desktop only */}
+          {/* Segment 1: step 1 → step 2 */}
           <div
-            className="hidden md:block absolute top-8 left-[20%] right-[20%] h-px"
+            className="hidden md:block absolute"
             style={{
-              borderTop: "2px dashed rgba(236,251,169,0.25)"
+              top: "24px",
+              left: "calc(16.66% + 24px)",
+              right: "calc(50% + 24px)",
+              borderTop: "2px dashed rgba(0,69,74,0.3)"
+            }}
+          />
+          {/* Segment 2: step 2 → step 3 */}
+          <div
+            className="hidden md:block absolute"
+            style={{
+              top: "24px",
+              left: "calc(50% + 24px)",
+              right: "calc(16.66% + 24px)",
+              borderTop: "2px dashed rgba(0,69,74,0.3)"
             }}
           />
 
