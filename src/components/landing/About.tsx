@@ -47,13 +47,21 @@ const About = () => {
             }}
           >
             <img
-              src="/images/founder.jpg"
+              src="/images/founder.png"
               alt="Marko Odak"
-              className="w-12 h-12 rounded-full object-cover"
-              style={{ border: "2px solid rgba(236,251,169,0.3)" }}
-              onError={(e) => {
-                const el = e.currentTarget as HTMLImageElement
-                el.style.display = "none"
+              style={{
+                width: "56px",
+                height: "56px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "2px solid #00454A",
+                flexShrink: 0
+              }}
+              onError={e => {
+                const img = e.currentTarget as HTMLImageElement
+                if (img.src.includes("/images/founder.png")) {
+                  img.src = "/founder.png"
+                }
               }}
             />
             <div className="flex-1">

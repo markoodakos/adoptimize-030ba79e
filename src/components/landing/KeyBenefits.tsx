@@ -13,18 +13,28 @@ const KeyBenefits = () => {
     <section
       style={{
         background: "#060606",
-        padding: "100px 48px"
+        padding: "100px 0",
+        display: "flex",
+        justifyContent: "center",
+        width: "100%"
       }}
     >
       <div
-        className="grid grid-cols-1 md:grid-cols-2"
         style={{
           maxWidth: "1280px",
           margin: "0 auto",
-          gap: "80px",
-          alignItems: "center"
+          width: "100%",
+          padding: "0 48px"
         }}
       >
+        <div
+          className="grid grid-cols-1 md:grid-cols-2"
+          style={{
+            gap: "80px",
+            alignItems: "center",
+            width: "100%"
+          }}
+        >
         {/* LEFT — Screenshot */}
         <div className="w-full">
           <img
