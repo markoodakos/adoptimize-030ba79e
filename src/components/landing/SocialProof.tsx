@@ -72,8 +72,9 @@ const SocialProof = () => {
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-semibold"
                   style={{
-                    background: "rgba(236,251,169,0.15)",
-                    color: "#ECFBA9"
+                    background: "#00454A",
+                    color: "#FCFCFC",
+                    fontWeight: 700
                   }}
                 >
                   {t.initials}
