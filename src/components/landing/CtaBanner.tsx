@@ -9,27 +9,42 @@ const CtaBanner = () => {
     <section
       style={{
         background: "#060606",
-        padding: "100px 48px"
+        padding: "60px 48px"
       }}
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .ctabanner-title {
+            white-space: normal !important;
+          }
+          .ctabanner-card {
+            padding: 48px 32px !important;
+          }
+        }
+      `}</style>
       <div
+        className="ctabanner-card"
         style={{
           background: "#00454A",
           borderRadius: "24px",
           padding: "64px 80px",
-          maxWidth: "860px",
+          maxWidth: "1280px",
           width: "100%",
           margin: "0 auto",
           textAlign: "center"
         }}
       >
-        <h2 style={{
-          fontSize: "clamp(32px, 5vw, 52px)",
-          fontWeight: 800,
-          color: "#FCFCFC",
-          marginBottom: "16px",
-          lineHeight: 1.1
-        }}>
+        <h2
+          className="ctabanner-title"
+          style={{
+            fontSize: "clamp(32px, 4vw, 48px)",
+            fontWeight: 800,
+            color: "#FCFCFC",
+            marginBottom: "16px",
+            lineHeight: 1.1,
+            whiteSpace: "nowrap"
+          }}
+        >
           Ready to Optimize Your Ads?
         </h2>
         <p style={{
