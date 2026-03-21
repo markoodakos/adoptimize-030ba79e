@@ -166,7 +166,7 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
           {/* Drawer */}
           <div
             className="fixed top-0 right-0 z-50 w-72 h-full flex flex-col px-6 pt-16 pb-8"
-            style={{ background: "#0a0a0a" }}
+            style={{ background: "#060606", borderLeft: "1px solid rgba(255,255,255,0.08)" }}
           >
             <button
               onClick={() => setMobileOpen(false)}
@@ -180,14 +180,28 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
               <button
                 key={link.label}
                 onClick={link.action}
-                className="text-left py-3 text-base font-medium"
-                style={{ color: "rgba(252,252,252,0.8)" }}
+                onMouseEnter={() => setHoveredLink(link.label)}
+                onMouseLeave={() => setHoveredLink(null)}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  padding: "16px 24px",
+                  fontSize: "18px",
+                  fontWeight: hoveredLink === link.label ? 600 : 500,
+                  color: hoveredLink === link.label ? "#ECFBA9" : "#FCFCFC",
+                  background: hoveredLink === link.label ? "rgba(255,255,255,0.06)" : "transparent",
+                  borderRadius: "8px",
+                  border: "none",
+                  textAlign: "left" as const,
+                  cursor: "pointer",
+                  transition: "all 0.2s ease"
+                }}
               >
                 {link.label}
               </button>
             ))}
 
-            <div className="mt-auto flex flex-col gap-3">
+            <div className="mt-auto flex flex-col">
               {isLoggedIn ? (
                 <button
                   onClick={() => {
@@ -206,10 +220,24 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
                       setMobileOpen(false)
                       navigate("/login")
                     }}
-                    className="w-full py-2.5 rounded-lg text-sm font-medium"
+                    onMouseEnter={() => setSignInMobileHovered(true)}
+                    onMouseLeave={() => setSignInMobileHovered(false)}
                     style={{
-                      border: "1px solid rgba(252,252,252,0.2)",
+                      width: "100%",
+                      padding: "14px 24px",
+                      border: signInMobileHovered
+                        ? "1px solid rgba(255,255,255,0.5)"
+                        : "1px solid rgba(255,255,255,0.3)",
+                      borderRadius: "8px",
                       color: "#FCFCFC",
+                      background: signInMobileHovered
+                        ? "rgba(255,255,255,0.08)"
+                        : "transparent",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      marginTop: "16px",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease"
                     }}
                   >
                     Sign In
@@ -219,8 +247,23 @@ const Navbar = ({ onContactClick }: NavbarProps) => {
                       setMobileOpen(false)
                       navigate("/signup")
                     }}
-                    className="w-full py-2.5 rounded-lg text-sm font-semibold"
-                    style={{ background: "#ECFBA9", color: "#060606" }}
+                    onMouseEnter={() => setGetStartedMobileHovered(true)}
+                    onMouseLeave={() => setGetStartedMobileHovered(false)}
+                    style={{
+                      width: "100%",
+                      padding: "14px 24px",
+                      background: getStartedMobileHovered
+                        ? "rgba(236,251,169,0.85)"
+                        : "#ECFBA9",
+                      color: "#060606",
+                      borderRadius: "8px",
+                      border: "none",
+                      fontSize: "16px",
+                      fontWeight: 700,
+                      marginTop: "8px",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease"
+                    }}
                   >
                     Get Started
                   </button>
