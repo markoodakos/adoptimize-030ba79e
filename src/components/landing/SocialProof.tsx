@@ -21,20 +21,20 @@ const testimonials = [
 
 const SocialProof = () => {
   return (
-    <section style={{ background: "#060606" }} className="py-24 md:py-32">
+    <section style={{ background: "#FCFCFC" }} className="py-24 md:py-32">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
 
         {/* Header */}
         <div className="text-center mb-16">
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ color: "#FCFCFC" }}
+            style={{ color: "#060606" }}
           >
             Trusted by Growing Agencies
           </h2>
           <p
             className="text-base md:text-lg"
-            style={{ color: "rgba(252,252,252,0.6)" }}
+            style={{ color: "rgba(6,6,6,0.5)" }}
           >
             See what performance marketers are saying
           </p>
@@ -47,14 +47,14 @@ const SocialProof = () => {
               key={i}
               className="rounded-2xl p-8"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.1)"
+                background: "rgba(0,69,74,0.04)",
+                border: "1px solid rgba(0,69,74,0.12)"
               }}
             >
               {/* Stars */}
               <div
                 className="text-sm mb-4 tracking-wider"
-                style={{ color: "#ECFBA9" }}
+                style={{ color: "#00454A" }}
               >
                 ★★★★★
               </div>
@@ -62,7 +62,7 @@ const SocialProof = () => {
               {/* Quote */}
               <p
                 className="text-sm leading-relaxed mb-6"
-                style={{ color: "rgba(252,252,252,0.8)" }}
+                style={{ color: "rgba(6,6,6,0.75)" }}
               >
                 "{t.quote}"
               </p>
@@ -81,13 +81,13 @@ const SocialProof = () => {
                 <div>
                   <div
                     className="text-sm font-medium"
-                    style={{ color: "#FCFCFC" }}
+                    style={{ color: "#060606" }}
                   >
                     {t.name}
                   </div>
                   <div
                     className="text-xs"
-                    style={{ color: "rgba(252,252,252,0.5)" }}
+                    style={{ color: "rgba(6,6,6,0.5)" }}
                   >
                     {t.role}
                   </div>

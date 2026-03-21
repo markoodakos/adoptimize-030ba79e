@@ -38,26 +38,26 @@ const features = [
 
 const Features = () => {
   return (
-    <section id="features" style={{ background: "#060606" }} className="py-24 md:py-32">
+    <section id="features" style={{ background: "#FCFCFC" }} className="py-24 md:py-32">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
 
         {/* Header */}
         <div className="text-center mb-16">
           <span
             className="inline-block text-xs font-semibold tracking-[0.2em] uppercase mb-4"
-            style={{ color: "#ECFBA9" }}
+            style={{ color: "#00454A" }}
           >
             FEATURES
           </span>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
-            style={{ color: "#FCFCFC" }}
+            style={{ color: "#060606" }}
           >
             Everything You Need to Scale
           </h2>
           <p
             className="text-base md:text-lg max-w-xl mx-auto"
-            style={{ color: "rgba(252,252,252,0.6)" }}
+            style={{ color: "rgba(6,6,6,0.6)" }}
           >
             One dashboard. Three platforms. Infinite insights.
           </p>
@@ -72,26 +72,26 @@ const Features = () => {
                 key={i}
                 className="rounded-2xl p-8 transition-colors duration-300 cursor-default"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.1)"
+                  background: "rgba(0,69,74,0.06)",
+                  border: "1px solid rgba(0,69,74,0.12)"
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(236,251,169,0.4)"
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,69,74,0.3)"
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.1)"
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,69,74,0.12)"
                 }}
               >
-                <Icon size={28} style={{ color: "#ECFBA9" }} className="mb-4" />
+                <Icon size={28} style={{ color: "#00454A" }} className="mb-4" />
                 <h3
                   className="text-lg font-semibold mb-2"
-                  style={{ color: "#FCFCFC" }}
+                  style={{ color: "#060606" }}
                 >
                   {feature.title}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(252,252,252,0.6)" }}
+                  style={{ color: "rgba(6,6,6,0.6)" }}
                 >
                   {feature.desc}
                 </p>

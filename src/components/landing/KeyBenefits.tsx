@@ -88,7 +88,7 @@ const KeyBenefits = () => {
                 />
                 <span style={{
                   fontSize: "16px",
-                  color: "rgba(252,252,252,0.8)",
+                  color: "rgba(252,252,252,0.85)",
                   lineHeight: 1.6
                 }}>
                   {benefit}
