@@ -107,6 +107,10 @@ const faqs = [
 ]
 
 const PricingPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const [annual, setAnnual] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [supportOpen, setSupportOpen] = useState(false)
