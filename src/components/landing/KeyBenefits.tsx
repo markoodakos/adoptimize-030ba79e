@@ -12,7 +12,7 @@ const KeyBenefits = () => {
   return (
     <section
       style={{
-        background: "#060606",
+        background: "#00454A",
         padding: "100px 0",
         display: "flex",
         justifyContent: "center",
@@ -44,7 +44,7 @@ const KeyBenefits = () => {
             style={{
               maxWidth: "560px",
               borderRadius: "16px",
-              border: "1px solid rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.15)",
               boxShadow: "0 24px 60px rgba(0,0,0,0.4)",
               display: "block"
             }}
@@ -88,7 +88,7 @@ const KeyBenefits = () => {
                 />
                 <span style={{
                   fontSize: "16px",
-                  color: "rgba(252,252,252,0.8)",
+                  color: "rgba(252,252,252,0.85)",
                   lineHeight: 1.6
                 }}>
                   {benefit}

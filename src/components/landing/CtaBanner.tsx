@@ -7,27 +7,35 @@ const CtaBanner = () => {
 
   return (
     <section
-      className="py-24 md:py-32"
-      style={{ background: "#060606" }}
+      style={{
+        background: "#060606",
+        padding: "100px 48px"
+      }}
     >
       <div
-        className="max-w-[1280px] mx-auto px-6 md:px-12 text-center rounded-2xl"
         style={{
-          background: "rgba(236,251,169,0.06)",
-          border: "1px solid rgba(236,251,169,0.15)",
-          padding: "64px 48px",
+          background: "#00454A",
+          borderRadius: "24px",
+          padding: "80px 64px",
+          maxWidth: "860px",
+          margin: "0 auto",
+          textAlign: "center"
         }}
       >
-        <h2
-          className="text-3xl md:text-4xl font-bold mb-4"
-          style={{ color: "#FCFCFC" }}
-        >
+        <h2 style={{
+          fontSize: "clamp(32px, 5vw, 52px)",
+          fontWeight: 800,
+          color: "#FCFCFC",
+          marginBottom: "16px",
+          lineHeight: 1.1
+        }}>
           Ready to Optimize Your Ads?
         </h2>
-        <p
-          className="text-base md:text-lg mb-8 max-w-xl mx-auto"
-          style={{ color: "rgba(252,252,252,0.6)" }}
-        >
+        <p style={{
+          fontSize: "18px",
+          color: "rgba(252,252,252,0.7)",
+          marginBottom: "40px"
+        }}>
           Join 500+ agencies already scaling smarter with AdOptimize.
         </p>
         <button
@@ -35,15 +43,15 @@ const CtaBanner = () => {
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
-            background: hovered ? "#00454A" : "#060606",
-            color: "#ECFBA9",
+            background: hovered ? "rgba(236,251,169,0.85)" : "#ECFBA9",
+            color: "#060606",
             padding: "16px 40px",
             borderRadius: "8px",
             fontSize: "16px",
             fontWeight: 700,
             border: "none",
             cursor: "pointer",
-            transition: "background 0.2s ease",
+            transition: "background 0.2s ease"
           }}
         >
           Get Started Free

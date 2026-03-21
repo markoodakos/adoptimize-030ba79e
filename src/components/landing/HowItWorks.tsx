@@ -18,7 +18,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section style={{ background: "#060606" }} className="py-24 md:py-32">
+    <section style={{ background: "#00454A" }} className="py-24 md:py-32">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
 
         {/* Header */}
@@ -48,7 +48,7 @@ const HowItWorks = () => {
               top: "32px",
               left: "calc(16.666% + 40px)",
               right: "calc(50% + 40px)",
-              borderTop: "2px dashed rgba(236,251,169,0.4)"
+              borderTop: "2px dashed rgba(236,251,169,0.3)"
             }}
           />
           {/* Segment 2: step 2 → step 3 */}
@@ -58,7 +58,7 @@ const HowItWorks = () => {
               top: "32px",
               left: "calc(50% + 40px)",
               right: "calc(16.666% + 40px)",
-              borderTop: "2px dashed rgba(236,251,169,0.4)"
+              borderTop: "2px dashed rgba(236,251,169,0.3)"
             }}
           />
 
@@ -68,7 +68,7 @@ const HowItWorks = () => {
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold mb-6 relative z-10"
                 style={{
-                  background: "rgba(236,251,169,0.1)",
+                  background: "rgba(0,0,0,0.2)",
                   color: "#ECFBA9",
                   border: "2px solid rgba(236,251,169,0.3)"
                 }}
@@ -85,7 +85,7 @@ const HowItWorks = () => {
 
               <p
                 className="text-sm leading-relaxed max-w-[280px]"
-                style={{ color: "rgba(252,252,252,0.6)" }}
+                style={{ color: "rgba(252,252,252,0.7)" }}
               >
                 {step.desc}
               </p>
