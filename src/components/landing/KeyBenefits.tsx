@@ -98,6 +98,7 @@ const KeyBenefits = () => {
           </div>
         </div>
       </div>
+      </div>
     </section>
   )
 }
