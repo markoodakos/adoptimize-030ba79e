@@ -29,7 +29,7 @@ const Hero = () => {
         {/* 2. HEADLINE */}
         <h1
           className="font-bold leading-tight mb-6"
-          style={{ color: "#FCFCFC", fontSize: "clamp(56px, 8vw, 96px)" }}
+          style={{ color: "#FCFCFC", fontSize: "clamp(44px, 6vw, 76px)" }}
         >
           Scale Your Ads.
           <br />
