@@ -9,10 +9,29 @@ import About from "@/components/landing/About"
 import CtaBanner from "@/components/landing/CtaBanner"
 import Footer from "@/components/landing/Footer"
 import SupportModal from "@/components/layout/SupportModal"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { supabase } from "@/integrations/supabase/client"
 
 const Landing = () => {
+  const navigate = useNavigate()
+  const [checking, setChecking] = useState(true)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(
+      ({ data: { session } }) => {
+        if (session) {
+          navigate("/dashboard", { replace: true })
+        } else {
+          setChecking(false)
+        }
+      }
+    )
+  }, [])
+
   const [supportOpen, setSupportOpen] = useState(false)
+
+  if (checking) return null
 
   return (
     <div className="min-h-screen" style={{ background: "#060606" }}>

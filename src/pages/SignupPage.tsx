@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import AuthLayout from "@/components/auth/AuthLayout";
@@ -28,6 +28,21 @@ const strengthColors: Record<number, string> = {
 };
 
 const SignupPage = () => {
+  const navigate = useNavigate();
+  const [checking, setChecking] = useState(true);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(
+      ({ data: { session } }) => {
+        if (session) {
+          navigate("/dashboard", { replace: true });
+        } else {
+          setChecking(false);
+        }
+      }
+    );
+  }, []);
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +50,8 @@ const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
+
+  if (checking) return null;
 
   const strength = getStrength(password);
 
