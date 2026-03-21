@@ -12,7 +12,7 @@ const KeyBenefits = () => {
   return (
     <section
       style={{
-        background: "#060606",
+        background: "#00454A",
         padding: "100px 0",
         display: "flex",
         justifyContent: "center",
