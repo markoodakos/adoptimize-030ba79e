@@ -16,8 +16,9 @@ const CtaBanner = () => {
         style={{
           background: "#00454A",
           borderRadius: "24px",
-          padding: "80px 64px",
+          padding: "64px 80px",
           maxWidth: "860px",
+          width: "100%",
           margin: "0 auto",
           textAlign: "center"
         }}
