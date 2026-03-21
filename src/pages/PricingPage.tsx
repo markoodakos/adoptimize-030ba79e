@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Check, X, ChevronDown, ChevronUp } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import SupportModal from "@/components/layout/SupportModal"
@@ -107,6 +107,10 @@ const faqs = [
 ]
 
 const PricingPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const [annual, setAnnual] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [supportOpen, setSupportOpen] = useState(false)
