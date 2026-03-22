@@ -1,8 +1,11 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Youtube, Instagram, Globe } from "lucide-react"
 
 const Hero = () => {
   const navigate = useNavigate()
+  const [primaryHovered, setPrimaryHovered] = useState(false)
+  const [secondaryHovered, setSecondaryHovered] = useState(false)
 
   return (
     <section
