@@ -55,86 +55,141 @@ const Footer = ({ onContactClick }: FooterProps) => {
     <footer
       style={{
         background: "#060606",
-        borderTop: "1px solid rgba(252,252,252,0.08)",
+        padding: "64px 48px 32px",
       }}
-      className="py-16"
     >
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-        {/* Top grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
-          {/* Column 1 — Brand */}
-          <div className="md:col-span-2">
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-top {
+            flex-direction: column;
+            gap: 40px;
+          }
+          .footer-links-group {
+            flex-wrap: wrap;
+            gap: 40px;
+          }
+          .footer-bottom {
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+          }
+        }
+      `}</style>
+
+      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+        {/* TOP ROW */}
+        <div
+          className="footer-top"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "48px",
+          }}
+        >
+          {/* LEFT — Brand block */}
+          <div>
             <img src={logoDark} alt="AdOptimize" className="h-7 mb-4" />
             <p
-              className="text-sm leading-relaxed max-w-xs"
-              style={{ color: "rgba(252,252,252,0.5)" }}
+              style={{
+                fontSize: "14px",
+                color: "rgba(252,252,252,0.45)",
+                maxWidth: "260px",
+                lineHeight: 1.6,
+              }}
             >
               AI-powered ad optimization for modern agencies.
             </p>
           </div>
 
-          {/* Columns 2-4 */}
-          {columns.map((col) => (
-            <div key={col.heading}>
-              <p
-                className="text-xs font-semibold tracking-[0.15em] mb-4"
-                style={{ color: "rgba(252,252,252,0.4)" }}
-              >
-                {col.heading}
-              </p>
-              {col.links.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => handleLink(link)}
-                  className="block w-full text-left transition-colors duration-200 mb-3"
+          {/* RIGHT — Link columns */}
+          <div
+            className="footer-links-group"
+            style={{
+              display: "flex",
+              gap: "80px",
+            }}
+          >
+            {columns.map((col) => (
+              <div key={col.heading}>
+                <p
                   style={{
-                    fontSize: "14px",
-                    color: "rgba(252,252,252,0.6)",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: 0,
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLButtonElement).style.color = "#ECFBA9"
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLButtonElement).style.color =
-                      "rgba(252,252,252,0.6)"
+                    fontSize: "11px",
+                    letterSpacing: "2px",
+                    color: "rgba(252,252,252,0.35)",
+                    fontWeight: 600,
+                    marginBottom: "20px",
+                    textTransform: "uppercase",
                   }}
                 >
-                  {link.label}
-                  {(link as any).comingSoon && (
-                    <span
-                      className="ml-2 text-xs"
-                      style={{ color: "rgba(252,252,252,0.3)" }}
-                    >
-                      (Coming Soon)
-                    </span>
-                  )}
-                </button>
-              ))}
-            </div>
-          ))}
+                  {col.heading}
+                </p>
+                {col.links.map((link) => (
+                  <button
+                    key={link.label}
+                    onClick={() => handleLink(link)}
+                    className="footer-link"
+                    style={{
+                      fontSize: "14px",
+                      color: "rgba(252,252,252,0.55)",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: 0,
+                      display: "block",
+                      marginBottom: "14px",
+                      textAlign: "left",
+                      transition: "color 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      ;(e.currentTarget as HTMLButtonElement).style.color = "#ECFBA9"
+                    }}
+                    onMouseLeave={(e) => {
+                      ;(e.currentTarget as HTMLButtonElement).style.color =
+                        "rgba(252,252,252,0.55)"
+                    }}
+                  >
+                    {link.label}
+                    {(link as any).comingSoon && (
+                      <span
+                        className="ml-2 text-xs"
+                        style={{ color: "rgba(252,252,252,0.25)" }}
+                      >
+                        (Coming Soon)
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* BOTTOM BAR */}
         <div
-          className="flex flex-col md:flex-row items-center justify-between pt-8 gap-4"
-          style={{ borderTop: "1px solid rgba(252,252,252,0.08)" }}
+          className="footer-bottom"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: "24px",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+          }}
         >
-          <p className="text-sm" style={{ color: "rgba(252,252,252,0.4)" }}>
+          <p style={{ fontSize: "13px", color: "rgba(252,252,252,0.35)" }}>
             © 2026 AdOptimize. All rights reserved.
           </p>
 
           {/* Social icons */}
-          <div className="flex items-center gap-4">
+          <div style={{ display: "flex", gap: "16px" }}>
             <a
-              href="https://linkedin.com/in/marko-odak-a229a9381"
+              href="https://linkedin.com/in/markoodak"
               target="_blank"
               rel="noreferrer"
-              className="transition-colors duration-200"
-              style={{ color: "rgba(252,252,252,0.4)" }}
+              style={{
+                color: "rgba(252,252,252,0.4)",
+                transition: "color 0.2s ease",
+                cursor: "pointer",
+              }}
               onMouseEnter={(e) => {
                 ;(e.currentTarget as HTMLAnchorElement).style.color = "#ECFBA9"
               }}
@@ -149,8 +204,11 @@ const Footer = ({ onContactClick }: FooterProps) => {
               href="https://github.com/markoodakos"
               target="_blank"
               rel="noreferrer"
-              className="transition-colors duration-200"
-              style={{ color: "rgba(252,252,252,0.4)" }}
+              style={{
+                color: "rgba(252,252,252,0.4)",
+                transition: "color 0.2s ease",
+                cursor: "pointer",
+              }}
               onMouseEnter={(e) => {
                 ;(e.currentTarget as HTMLAnchorElement).style.color = "#ECFBA9"
               }}
