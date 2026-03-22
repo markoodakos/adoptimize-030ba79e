@@ -198,7 +198,7 @@ const AnalyticsPage = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                     <XAxis dataKey="week" axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
                     <YAxis tickFormatter={(v: number) => `${v}%`} domain={[0, 6]} axisLine={false} tickLine={false} tick={{ fontSize: 11 }} />
-                    <Tooltip content={<CTRCustomTooltip />} />
+                    <Tooltip content={<CTRCustomTooltip />} cursor={{ fill: "rgba(249,115,22,0.08)" }} />
                     <Legend />
                     <Bar dataKey="facebook" fill="hsl(174, 100%, 14%)" radius={[4, 4, 0, 0]} name="Facebook" />
                     <Bar dataKey="instagram" fill="hsl(74, 92%, 82%)" radius={[4, 4, 0, 0]} name="Instagram" />

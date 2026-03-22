@@ -167,7 +167,7 @@ const ChartsRow = () => {
               tickLine={false}
               tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }}
             />
-            <Tooltip content={<CTRCustomTooltip />} />
+            <Tooltip content={<CTRCustomTooltip />} cursor={{ fill: "rgba(249,115,22,0.08)" }} />
             <Bar dataKey="facebook" fill="hsl(var(--color-teal))" radius={[4, 4, 0, 0]} />
             <Bar dataKey="instagram" fill="hsl(74, 60%, 55%)" radius={[4, 4, 0, 0]} />
             <Bar dataKey="youtube" fill="#94a3b8" radius={[4, 4, 0, 0]} />
