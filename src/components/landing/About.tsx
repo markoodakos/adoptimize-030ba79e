@@ -3,7 +3,7 @@ import logoDark from "@/assets/brand/adoptimize_logo_dark.svg"
 
 const About = () => {
   return (
-    <section id="about" style={{ background: "#060606", borderBottom: "1px solid rgba(255,255,255,0.06)" }} className="py-24 md:py-32">
+    <section id="about" style={{ background: "#060606" }} className="py-24 md:py-32">
       <div
         className="grid grid-cols-1 md:grid-cols-2 items-center"
         style={{ maxWidth: "1280px", margin: "0 auto", gap: "80px", padding: "0 48px" }}

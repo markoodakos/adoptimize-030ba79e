@@ -68,7 +68,7 @@ const PricingPreview = ({ onContactClick }: PricingPreviewProps) => {
   const navigate = useNavigate()
 
   return (
-    <section style={{ background: "#060606" }} className="py-24 md:py-32">
+    <section style={{ background: "#060606", borderBottom: "1px solid rgba(255,255,255,0.06)" }} className="py-24 md:py-32">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-16">

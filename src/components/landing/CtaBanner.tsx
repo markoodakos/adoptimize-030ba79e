@@ -9,8 +9,7 @@ const CtaBanner = () => {
     <section
       style={{
         background: "#060606",
-        padding: "60px 48px",
-        borderBottom: "1px solid rgba(255,255,255,0.06)"
+        padding: "60px 48px"
       }}
     >
       <style>{`
