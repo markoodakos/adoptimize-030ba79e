@@ -122,8 +122,12 @@ const Hero = () => {
           >
             <button
               onClick={() => navigate("/signup")}
+              onMouseEnter={() => setPrimaryHovered(true)}
+              onMouseLeave={() => setPrimaryHovered(false)}
               style={{
-                background: "#ECFBA9",
+                background: primaryHovered
+                  ? "rgba(236,251,169,0.85)"
+                  : "#ECFBA9",
                 color: "#060606",
                 padding: "14px 28px",
                 borderRadius: "8px",
@@ -131,21 +135,29 @@ const Hero = () => {
                 fontSize: "15px",
                 border: "none",
                 cursor: "pointer",
+                transition: "background 0.2s ease",
               }}
             >
               Get Started Free
             </button>
             <button
               onClick={() => navigate("/pricing")}
+              onMouseEnter={() => setSecondaryHovered(true)}
+              onMouseLeave={() => setSecondaryHovered(false)}
               style={{
-                background: "transparent",
-                border: "1px solid rgba(252,252,252,0.3)",
+                background: secondaryHovered
+                  ? "rgba(255,255,255,0.08)"
+                  : "transparent",
+                border: secondaryHovered
+                  ? "1px solid rgba(255,255,255,0.5)"
+                  : "1px solid rgba(252,252,252,0.3)",
                 color: "#FCFCFC",
                 padding: "14px 28px",
                 borderRadius: "8px",
                 fontWeight: 600,
                 fontSize: "15px",
                 cursor: "pointer",
+                transition: "all 0.2s ease",
               }}
             >
               See Pricing
