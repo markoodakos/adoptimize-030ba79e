@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      style={{ background: "#060606" }}
+      style={{ background: "#060606", paddingBottom: "80px" }}
     >
       <style>{`
         @media (max-width: 768px) {
@@ -34,8 +34,9 @@ const Hero = () => {
           .hero-ctas {
             justify-content: center !important;
           }
-          .hero-stats {
-            justify-content: center !important;
+          .hero-stats-row {
+            padding: 0 24px;
+            gap: 12px !important;
           }
         }
       `}</style>
@@ -172,7 +173,6 @@ const Hero = () => {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              marginBottom: "32px",
             }}
           >
             <span style={{ color: "#ECFBA9", fontSize: "14px", letterSpacing: "2px" }}>
@@ -181,53 +181,6 @@ const Hero = () => {
             <span style={{ color: "rgba(252,252,252,0.5)", fontSize: "12px" }}>
               5.0 · Trusted by 500+ agencies
             </span>
-          </div>
-
-          {/* 7. STATS CARDS ROW */}
-          <div
-            className="hero-stats"
-            style={{
-              display: "flex",
-              gap: "16px",
-              flexWrap: "wrap",
-            }}
-          >
-            {[
-              { value: "2,400+", label: "Ads Analyzed" },
-              { value: "38%", label: "Avg. Lift" },
-              { value: "$4.2M+", label: "Ad Spend" },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                style={{
-                  background: "rgba(252,252,252,0.04)",
-                  border: "1px solid rgba(252,252,252,0.08)",
-                  borderRadius: "12px",
-                  padding: "16px 24px",
-                  minWidth: "120px",
-                  textAlign: "center",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#ECFBA9",
-                    fontSize: "22px",
-                    fontWeight: 700,
-                    marginBottom: "2px",
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  style={{
-                    color: "rgba(252,252,252,0.5)",
-                    fontSize: "12px",
-                  }}
-                >
-                  {stat.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -247,6 +200,58 @@ const Hero = () => {
             }}
           />
         </div>
+      </div>
+
+      {/* STATS CARDS ROW — below grid */}
+      <div
+        className="hero-stats-row"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "24px",
+          flexWrap: "wrap",
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 48px",
+        }}
+      >
+        {[
+          { value: "2,400+", label: "Ads Analyzed" },
+          { value: "38%", label: "Avg. Performance Lift" },
+          { value: "$4.2M+", label: "Ad Spend Managed" },
+        ].map((stat, i) => (
+          <div
+            key={i}
+            style={{
+              background: "rgba(252,252,252,0.04)",
+              border: "1px solid rgba(252,252,252,0.08)",
+              borderRadius: "12px",
+              padding: "28px 40px",
+              minWidth: "200px",
+              textAlign: "center",
+              flex: 1,
+            }}
+          >
+            <div
+              style={{
+                color: "#ECFBA9",
+                fontSize: "36px",
+                fontWeight: 700,
+                marginBottom: "4px",
+              }}
+            >
+              {stat.value}
+            </div>
+            <div
+              style={{
+                color: "rgba(252,252,252,0.5)",
+                fontSize: "14px",
+              }}
+            >
+              {stat.label}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   )

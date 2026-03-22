@@ -19,6 +19,20 @@ const KeyBenefits = () => {
         width: "100%"
       }}
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .keybenefits-img-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          }
+          .keybenefits-img-col img {
+            margin: 0 auto;
+            display: block;
+          }
+        }
+      `}</style>
       <div
         style={{
           maxWidth: "1280px",
@@ -36,7 +50,7 @@ const KeyBenefits = () => {
           }}
         >
         {/* LEFT — Screenshot */}
-        <div className="w-full">
+        <div className="w-full keybenefits-img-col">
           <img
             src="/images/screen-analytics.png"
             alt="Analytics Dashboard"
