@@ -50,6 +50,39 @@ const statCards = [
   { label: "Total Conversions", value: "1,840", trend: "+15% vs last period", variant: "success" },
 ];
 
+const CTRCustomTooltip = ({ active, payload, label }: any) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div style={{
+      background: "#1a0e00",
+      border: "1px solid #f97316",
+      borderRadius: "8px",
+      padding: "10px 14px",
+      fontSize: "13px",
+      color: "#FCFCFC",
+      boxShadow: "0 4px 12px rgba(249,115,22,0.15)"
+    }}>
+      <p style={{
+        color: "#f97316",
+        fontWeight: 600,
+        fontSize: 13,
+        margin: "0 0 4px 0"
+      }}>
+        {label}
+      </p>
+      {payload.map((entry: any, index: number) => (
+        <p key={index} style={{
+          color: "rgba(252,252,252,0.85)",
+          fontSize: 12,
+          margin: "2px 0"
+        }}>
+          {entry.name}: {entry.value}%
+        </p>
+      ))}
+    </div>
+  );
+};
+
 const AnalyticsPage = () => {
   const { toast } = useToast();
   const [sidebarOpen, setSidebarOpen] = useState(false);
