@@ -9,9 +9,10 @@ import { useAuth } from "@/hooks/useAuth";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  onConnectClick?: () => void;
 }
 
-const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+const Sidebar = ({ isOpen, onClose, onConnectClick }: SidebarProps) => {
   const { profile, getInitials } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -118,7 +119,10 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {/* Mobile Connect Account */}
         <div className="lg:hidden mx-4 pt-4 mb-4 border-t border-white/10">
           <button
-            onClick={onClose}
+            onClick={() => {
+              onClose();
+              onConnectClick?.();
+            }}
             className="w-full bg-[hsl(var(--color-teal))] text-[hsl(var(--color-lime))] dark:bg-[hsl(var(--color-lime))] dark:text-[hsl(var(--color-teal))] font-semibold text-sm rounded-lg py-2.5 hover:opacity-90 transition-opacity"
           >
             + Connect Account
