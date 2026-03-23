@@ -12,7 +12,7 @@ interface SidebarProps {
   onConnectClick?: () => void;
 }
 
-const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+const Sidebar = ({ isOpen, onClose, onConnectClick }: SidebarProps) => {
   const { profile, getInitials } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
