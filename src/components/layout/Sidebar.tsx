@@ -16,6 +16,7 @@ const Sidebar = ({ isOpen, onClose, onConnectClick }: SidebarProps) => {
   const { profile, getInitials } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const showConnectBtn = location.pathname !== "/settings";
   const [isDark, setIsDark] = useState(
     () => document.documentElement.classList.contains("dark")
   );
