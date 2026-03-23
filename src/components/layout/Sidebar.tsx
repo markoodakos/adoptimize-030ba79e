@@ -9,6 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  onConnectClick?: () => void;
 }
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
