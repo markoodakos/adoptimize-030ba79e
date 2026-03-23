@@ -122,6 +122,7 @@ const Sidebar = ({ isOpen, onClose, onConnectClick }: SidebarProps) => {
           <div className="lg:hidden mx-4 pt-4 mb-4 border-t border-white/10">
             <button
               onClick={() => {
+                console.log("Connect button clicked", "onConnectClick:", typeof onConnectClick);
                 onClose();
                 onConnectClick?.();
               }}
