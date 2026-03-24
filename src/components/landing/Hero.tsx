@@ -12,12 +12,11 @@ const Hero = () => {
       id="hero"
       style={{
         background: "#060606",
-        height: "100vh",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column" as const,
-        justifyContent: "space-between",
-        overflow: "hidden",
+        justifyContent: "center",
+        padding: "100px 48px 80px",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
@@ -26,7 +25,7 @@ const Hero = () => {
           .hero-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
-            padding: 100px 24px 0 !important;
+            padding: 0 !important;
           }
           .hero-left {
             align-items: center !important;
