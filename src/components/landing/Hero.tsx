@@ -25,7 +25,7 @@ const Hero = () => {
           .hero-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
-            padding: 100px 24px 0 !important;
+            padding: 0 !important;
           }
           .hero-left {
             align-items: center !important;
