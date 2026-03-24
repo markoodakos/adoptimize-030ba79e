@@ -1,73 +1,319 @@
-# Welcome to your Lovable project
+# AdOptimize — AI-Powered Ad Optimization SaaS
 
-## Project info
+> Scale your Facebook, Instagram and YouTube ads 
+> smarter, faster and safer — with AI-powered 
+> insights in one clean, conversion-focused dashboard.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![AdOptimize Dashboard](public/images/screen-dashboard.png)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Live Demo
 
-**Use Lovable**
+🔗 [adoptimize-030ba79e.vercel.app](https:// https://adoptimize-030ba79e.vercel.app/)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📌 What is AdOptimize?
 
-**Use your preferred IDE**
+AdOptimize is a full-stack SaaS application built 
+for digital marketing agencies and performance 
+marketers who manage ad campaigns across multiple 
+platforms.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Instead of switching between Facebook Ads Manager, 
+Google Ads, and YouTube Studio, AdOptimize brings 
+everything into a single, clean dashboard — powered 
+by AI analysis that delivers instant, actionable 
+recommendations for every ad account.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## ✨ Key Features
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **AI-Powered Analysis** — Click "Analyze" on any 
+  ad account to receive instant GPT-powered 
+  recommendations prioritized by impact
+- **Multi-Platform Dashboard** — Facebook, Instagram 
+  and YouTube ad accounts in one unified view
+- **Real-Time Analytics** — Impressions, CTR, 
+  conversions and spend tracking with interactive 
+  charts
+- **Campaign Management** — Full campaign overview 
+  with platform, budget, spend and status tracking
+- **Secure Authentication** — Email/password and 
+  Google OAuth via Supabase Auth
+- **Light/Dark Theme** — Fully functional theme 
+  toggle across all pages
+- **Notifications System** — Real-time performance 
+  alerts with mark-as-read functionality
+- **Pricing Plans** — Three-tier pricing (Starter, 
+  Pro, Agency) with annual/monthly toggle
+- **Stripe Ready** — Pricing UI fully built and 
+  ready for Stripe subscription integration
+- **Responsive Design** — Optimized for desktop, 
+  tablet and mobile
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🛠 Tech Stack
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Frontend
+| Technology | Purpose |
+|---|---|
+| React + TypeScript | UI framework |
+| Vite | Build tool |
+| Tailwind CSS | Styling |
+| shadcn/ui | Component library |
+| Recharts | Data visualization |
+| React Router | Client-side routing |
+| Lucide React | Icon library |
+
+### Backend & Infrastructure
+| Technology | Purpose |
+|---|---|
+| Supabase | Database, Auth, Edge Functions |
+| PostgreSQL | Primary database |
+| Row Level Security | Data access control |
+| Supabase Edge Functions | Serverless API layer |
+| Deno | Edge Function runtime |
+
+### AI & APIs
+| Technology | Purpose |
+|---|---|
+| OpenAI GPT-5 mini | Ad analysis engine |
+| OpenAI Chat Completions API | AI recommendations |
+
+### Deployment
+| Technology | Purpose |
+|---|---|
+| Vite + Custom Domain | Frontend hosting |
+| Supabase Cloud | Backend hosting |
+| GitHub | Version control |
+
+---
+
+## 🏗 Architecture
+```
+┌─────────────────────────────────────┐
+│           React Frontend            │
+│     (Vite + TypeScript)   │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│         Supabase Platform           │
+│                                     │
+│  ┌─────────┐  ┌──────────────────┐  │
+│  │  Auth   │  │   PostgreSQL DB  │  │
+│  │ (email  │  │   (4 tables +    │  │
+│  │ + OAuth)│  │      RLS)        │  │
+│  └─────────┘  └──────────────────┘  │
+│                                     │
+│  ┌──────────────────────────────┐   │
+│  │      Edge Functions          │   │
+│  │  analyze-ad-account          │   │
+│  │  (Deno + OpenAI API)         │   │
+│  └──────────────────────────────┘   │
+└─────────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│         OpenAI API                  │
+│         GPT-5 mini                  │
+│   (Ad performance analysis)         │
+└─────────────────────────────────────┘
+```
+
+---
+
+## 📁 Project Structure
+```
+adoptimize/
+├── public/
+│   └── images/          # App screenshots + assets
+├── src/
+│   ├── components/
+│   │   ├── dashboard/   # Dashboard components
+│   │   └── landing/     # Landing page sections
+│   ├── pages/
+│   │   ├── Landing.tsx  # Public landing page
+│   │   ├── Login.tsx    # Auth pages
+│   │   ├── Signup.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── AdAccounts.tsx
+│   │   ├── Campaigns.tsx
+│   │   ├── Analytics.tsx
+│   │   ├── Pricing.tsx
+│   │   └── Settings.tsx
+│   └── integrations/
+│       └── supabase/    # Supabase client + types
+└── supabase/
+    └── functions/
+        └── analyze-ad-account/
+            └── index.ts # OpenAI Edge Function
+```
+
+---
+
+## 🗄 Database Schema
+```sql
+-- Users (managed by Supabase Auth)
+auth.users
+
+-- Ad Accounts
+ad_accounts (
+  id, user_id, platform, 
+  account_name, status, created_at
+)
+
+-- Campaigns
+campaigns (
+  id, ad_account_id, user_id,
+  name, budget, spent, 
+  status, created_at
+)
+
+-- AI Analyses
+analyses (
+  id, ad_account_id, user_id,
+  recommendations, created_at
+)
+
+-- Plans
+plans (
+  id, name, price_monthly,
+  price_annual, features
+)
+```
+
+*All tables protected with Row Level Security (RLS)*
+
+---
+
+## 🤖 AI Analysis Flow
+```
+User clicks "Analyze" button
+         │
+         ▼
+Frontend sends POST request to
+Supabase Edge Function with:
+  - accountName
+  - platform  
+  - spend, impressions
+  - clicks, conversions
+         │
+         ▼
+Edge Function calculates:
+  - CTR, CPC, Conversion Rate
+         │
+         ▼
+OpenAI GPT-5 mini analyzes metrics
+and returns 3-5 prioritized
+actionable recommendations
+         │
+         ▼
+Recommendations displayed in
+modal with copy-to-clipboard
+```
+
+---
+
+## 🔐 Authentication Flow
+```
+Public routes:    /  /login  /signup  /pricing
+Protected routes: /dashboard  /ad-accounts
+                  /campaigns  /analytics  /settings
+
+Logged-in users visiting public routes
+→ Auto-redirected to /dashboard
+
+Logged-out users visiting protected routes  
+→ Auto-redirected to /login
+```
+
+---
+
+## 💳 Stripe Integration (Ready to Connect)
+
+The complete pricing UI is built and production-ready with three subscription tiers:
+
+| Plan | Price | Key Limit |
+|---|---|---|
+| Starter | Free | 2 accounts, 5 AI analyses/mo |
+| Pro | $49/mo | 10 accounts, unlimited analyses |
+| Agency | $149/mo | Unlimited everything, 5 team members |
+
+**To activate Stripe:**
+1. Create Stripe products matching the three tiers
+2. Add a `stripe-webhook` Supabase Edge Function
+3. Add `subscription_status` to the users table
+4. Wire CTA buttons to Stripe Checkout
+
+---
+
+## 🚀 Running Locally
+
+### Prerequisites
+- Node.js 18+
+- Git
+- Supabase CLI
+
+### Setup
+```bash
+# Clone the repository
+git clone https://github.com/markoodakos/adoptimize-030ba79e.git
+cd adoptimize-030ba79e
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open `http://localhost:8080` in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment
+Supabase credentials are configured directly 
+in `src/integrations/supabase/client.ts` 
 
-**Use GitHub Codespaces**
+## 🗺 Roadmap
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- [ ] Stripe subscription integration
+- [ ] Facebook Ads API connection
+- [ ] Google Ads API connection  
+- [ ] YouTube Analytics API connection
+- [ ] Real-time campaign performance alerts
+- [ ] AI recommendation history/archive
+- [ ] Team collaboration features
+- [ ] White-label option for agencies
+- [ ] Custom report generation
+- [ ] Mobile app (React Native)
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 👤 About the Developer
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Marko Odak**
+Founder & Developer, AdOptimize
 
-## How can I deploy this project?
+Built by a developer who understands both 
+the technical and strategic side of digital 
+advertising. AdOptimize is designed to be 
+the tool that was always missing.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+🔗 [LinkedIn](https://linkedin.com/in/markoodak)
+🐙 [GitHub](https://github.com/markoodakos)
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 📌 Status
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+AdOptimize is currently in active development.
+Core features are live and functional.
+Platform API integrations and Stripe 
+billing are on the roadmap.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+*Built with React, TypeScript, Supabase, and OpenAI.*
