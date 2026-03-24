@@ -10,7 +10,16 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      style={{ background: "#060606", paddingBottom: "80px" }}
+      style={{
+        background: "#060606",
+        height: "100vh",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column" as const,
+        justifyContent: "space-between",
+        overflow: "hidden",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+      }}
     >
       <style>{`
         @media (max-width: 768px) {
