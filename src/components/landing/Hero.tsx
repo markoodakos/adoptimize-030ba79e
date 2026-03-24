@@ -233,9 +233,10 @@ const Hero = () => {
           justifyContent: "center",
           gap: "24px",
           flexWrap: "wrap",
+          maxWidth: "1280px",
           width: "100%",
           margin: "0 auto",
-          padding: "0",
+          padding: "0 48px",
           marginTop: "24px",
         }}
       >
