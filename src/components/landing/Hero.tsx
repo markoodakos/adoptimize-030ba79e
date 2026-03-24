@@ -236,7 +236,7 @@ const Hero = () => {
           width: "100%",
           margin: "0 auto",
           padding: "0",
-          marginTop: "48px",
+          marginTop: "24px",
         }}
       >
         {[
