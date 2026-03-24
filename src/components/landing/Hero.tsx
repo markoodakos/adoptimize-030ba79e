@@ -10,14 +10,23 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      style={{ background: "#060606", paddingBottom: "80px" }}
+      style={{
+        background: "#060606",
+        height: "100vh",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column" as const,
+        justifyContent: "space-between",
+        overflow: "hidden",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+      }}
     >
       <style>{`
         @media (max-width: 768px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
-            padding: 100px 24px 60px !important;
+            padding: 100px 24px 0 !important;
           }
           .hero-left {
             align-items: center !important;
